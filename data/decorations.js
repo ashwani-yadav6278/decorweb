@@ -1,0 +1,1846 @@
+import images from "./images";
+
+/* -------------------- HELPERS -------------------- */
+
+// Generate title from filename
+function generateTitle(filename) {
+  return filename
+    .replace(".jpg", "")
+    .replace(/_/g, " ")
+    .replace(/\b\w/g, (c) => c.toUpperCase());
+}
+
+// Convert "₹5999" → 5999
+function parsePrice(price) {
+  return Number(price.replace("₹", ""));
+}
+
+// Convert 6999 → "₹6999"
+function formatPrice(price) {
+  return `₹${price}`;
+}
+
+// Discount logic based on price
+function getDiscountAmount(price) {
+  if (price < 3000) return 500;
+  if (price >= 3000 && price < 5000) return 1000;
+  if (price >= 5000 && price < 10000) return 1500;
+  return 2200;
+}
+
+/* -------------------- DEFAULT ITEMS USED -------------------- */
+
+function getItemsUsed(title) {
+  const items = [
+    "Premium quality balloons",
+    "Theme-based color balloons",
+    "Balloon arch / ring / stand",
+    "Professional backdrop setup",
+    "LED lights (if applicable)",
+    "On-site installation",
+    "Clean removal after event",
+  ];
+
+  if (/baby|welcome/i.test(title)) {
+    items.push("Baby theme props", "Name foil balloons");
+  }
+
+  if (/birthday/i.test(title)) {
+    items.push("Happy Birthday foil balloons", "Cake table decoration");
+  }
+
+  if (/anniversary/i.test(title)) {
+    items.push("Heart foil balloons", "Couple name initials");
+  }
+
+  if (/ring|engagement/i.test(title)) {
+    items.push("Floral ring decor", "Artificial flowers");
+  }
+
+  return items;
+}
+
+/* -------------------- MANUAL ITEMS (IMAGE NAME BASED) -------------------- */
+
+const manualItemsUsed = {
+  "baby_shower_balloon_decoration.jpg": [
+    "Blue & white balloons",
+    "Baby name foil balloons",
+    "Cloud props",
+    "Welcome baby board",
+    "Ring stand",
+    "LED lights",
+  ],
+  "anniversary_25th_ring_balloon_decoration.jpg": [
+    "Chrome balloons in ring",
+    "Happy Anniversary Neon light(rent)",
+    "Two and Five  light numbers (rent)",
+    "Cake Table (rent)",
+    "Paper butterfly on ring",
+    "Complementry: 100 balloons extra in room ",
+  ],
+  "arch_balloon birthday decoration.jpg": [
+    "Balloons: blue, light blue and white",
+    "Happy birthday banner paper (cursive)",
+    "age number (32)",
+    "Complementry: 50 balloons extra in room ",
+  ],
+  "arch_balloon_birthday_decoration (2).jpg": [
+    "Balloons: white and rose gold chrome",
+    "Happy birthday banner paper (cursive)",
+    "curtains of net",
+    "light 1pc",
+  ],
+  "arch_balloon_birthday_decoration (3).jpg": [
+    "Balloons: white, golden and blue",
+    "age number 5",
+    "Happy birthday banner foil",
+    "2 Curtains silver",
+    "Five pc car foil balloon",
+    "Complementry: 50 balloons extra in room ",
+  ],
+  "arch jungle theme decor birthday_faridabad.jpeg": [
+    "balloons: yellow, choclate and green color ",
+    "Chrome balloons 30pc",
+    "Happy birthday banner paper",
+    "Five pc animal foil balloon",
+    "age number foil big size(32')",
+    "plastic green leafs",
+    "Complementry: 50 balloons extra in room ",
+  ],
+  "arch welcome baby boy decor faridabad.jpeg": [
+    "balloons: blue,grey and white  color ",
+    "Welcome baby banner Foil",
+    "Five pc Baby boy foil balloon",
+    "Complementry: 50 balloons extra in room ",
+  ],
+  "anniversary_ring_balloon_decoration.jpg": [
+    "Rose gold balloons",
+    "Heart foil balloons",
+    "Metal ring stand",
+    "Couple initials",
+    "Warm LED lights",
+  ],
+
+  "birthday_arch_balloon_decoration.jpg": [
+    "Multicolor balloons",
+    "Happy Birthday foil",
+    "Balloon arch frame",
+    "Theme backdrop",
+    "Table decoration",
+  ],
+  "arch_balloon_birthday_decoration (4).jpg": [
+    "Balloons: pink, white, purple, green,blue,orange, and yellow (Pastel colors)",
+    "Happy birthday banner paper ",
+    "age number 4",
+    "Five pc cocomelon foil balloon",
+    ,
+    "2 Curtains light blue",
+    "Complementry: 50 balloons extra in room ",
+  ],
+  "arch_balloon_birthday_decoration_1.jpg": [
+    "Balloons: balck and golden ",
+    "Happy birthday banner foil",
+    "2 balloon stands",
+    "2 heart and star(small) foil balloons",
+    "8 star or heart(small) balloons",
+  ],
+  "arch_balloon_birthday_decoration5.jpg": [
+    "Balloons: light gray, purple and light blue ",
+    "Happy birthday banner paper ",
+    "age number 2(samll size)",
+    "chrome balloons 20pc",
+    "Five pc  mirmaid foil balloon",
+    "1 light diwali type",
+  ],
+  "arch_balloon_birthday_decoration256.jpg": [
+    "Balloons: chrome golden, white and cherry red ",
+    "Happy birthday Led light banner(rent)",
+    "5pc kanfatti transparent balloons ",
+    "2 golden curtains",
+    "1pc round foil balloon",
+  ],
+  "arch_girl_balloon_birthday_decoration7.jpg": [
+    "Balloons: pink and purple (pastel) ",
+    "Happy birthday Led light banner(rent)",
+    "age number 29(big size,32')",
+    "chrome purple balloons ",
+    "Five pc cheers foil balloon",
+    "",
+  ],
+  "arch_jungle_theme_balloon_birthday_decoration8.jpg": [
+    "Balloons: green, yellow and brown ",
+    "Happy birthday banner paper ",
+    "Five pc animal foil balloon",
+    "chrome golden balloons 20pc",
+    "Artificial green leafs",
+    "age number foil big size( 32 inch)",
+  ],
+  "baby shower ballon decor.PNG": [
+    "Balloons: sage green, white, metallic gold, transparent confetti balloons",
+    "Backdrop: cream arch panels",
+    "Decoration: organic balloon garland",
+    "Props: BABY letter boxes",
+    "Props: teddy bear",
+    "Accessories: artificial gold leaves",
+  ],
+  "Baby shower balloon  decoration (197).JPG": [
+    "Balloons: lavender, purple, white, chrome bronze",
+    "Backdrop: large lavender-colored panel with text 'Ria's Baby Shower'",
+    "Decoration: balloon clusters with silver butterfly accents",
+    "Props: modern metallic geometric stand",
+  ],
+  "baby shower balloon decoration.PNG": [
+    "Balloons: Blue, pink, silver star-shaped, and standard latex balloons",
+    "Backdrop: Sheer fabric curtain with string lights",
+    "Decoration: Balloon clusters and floral arrangements forming a top garland",
+    "Props: Transparent BABY letter boxes filled with balloons",
+    "Accessories: Silver star-shaped balloons scattered around",
+  ],
+  "baby welcome decor for girl faridabad.jpeg": [
+    "Balloons: Pink, white, silver, and themed foil balloons (baby bottle, baby face, crescent moon)",
+    "Backdrop: Wall with large foil letter balloons spelling 'WELCOME BABY GIRL'",
+    "Decoration: Balloon arch and columns",
+    "Props: Transparent BABY letter boxes filled with balloons",
+    "Accessories: Crescent moon balloon, baby-themed foil accents",
+  ],
+  "baby_boss_theme_balloon_birthday decor.jpg": [
+    "Balloons: Blue, white, silver latex balloons arranged in arches and clusters",
+    'Backdrop: Blue and white checkered panel with "BOSS BABY Ayaan" text',
+    "Decoration: Balloon arch and themed foil balloon accents",
+    "Props: Large cutouts of Boss Baby character in a suit",
+    'Props: "ONE" display with baby bottle pattern and baby cutout',
+    "Accessories: Baby bottle and baby face foil balloons",
+  ],
+  "baby_shower_balloon decoration (4).jpg": [
+    "Balloons: Pink, blue, gold, bronze, and transparent confetti balloons",
+    'Backdrop: Wall with large gold foil balloons spelling "BABY SHOWER"',
+    "Decoration: Balloon clusters shaped like flowers and two balloon columns",
+    'Props: Themed foil balloons — baby bottle with "IT\'S A BOY" and baby foot',
+    "Accessories: Confetti-filled transparent balloons",
+  ],
+  "baby_shower_balloon_decoration.jpg": [
+    "Balloons: Pink, blue, gold, bronze, and transparent confetti balloons",
+    'Backdrop: Wall with large gold foil balloons spelling "BABY SHOWER"',
+    "Decoration: Balloon clusters shaped like flowers and two balloon columns",
+    'Props: Themed foil balloons — baby bottle with "IT\'S A BOY" and baby foot',
+    "Accessories: Confetti-filled transparent balloons",
+  ],
+  "baby_shower_balloondecoration (21).jpg": [
+    "Balloons: Pastel pink, blue, white, gold balloons; themed foil balloons",
+    'Backdrop: Silver fringe curtain with gold foil "BABY SHOWER" balloons',
+    "Decoration: Balloon arch surrounding the backdrop",
+    "Props: Foil balloons shaped like baby bottles, baby carriages, and baby feet",
+    'Accessories: Foil balloons with texts like "Baby Boy", "Baby Girl", "It\'s a Girl", "It\'s a Boy"',
+  ],
+  "baby_shower_ring_balloon_decoration.jpg": [
+    "Balloons: Pink, white, orange, and metallic balloons; themed foil balloons",
+    'Backdrop: Sheer curtain over doorway with "Happy Birthday" balloon',
+    "Decoration: Balloon arch above doorway and balloon columns on each side",
+    "Props: Cartoon character foil balloon, pink star-shaped wall balloons",
+  ],
+  "backdrop ring balloon birthday decoration shimmer wall.jpg": [
+    "Balloons: Black, gold, and metallic balloons arranged in arches and clusters",
+    'Backdrop: Gold sequin curtain with illuminated "Happy Birthday" sign',
+    "Decoration: Balloon arch, ring around staircase, cylindrical stands with balloon accents",
+    'Props: Illuminated marquee numbers "40"',
+    "Accessories: Gold starburst ornaments",
+    "Cake table with themed decor",
+  ],
+  "Ring Balloon Birthday Decoration (76).jpg": [
+    "Balloons: Red, purple, blue, green, orange, white balloons; metallic star and cartoon character balloons",
+    'Backdrop: Archway with golden "Happy Birthday" banner',
+    "Decoration: Multicolor balloon arch and clusters around doorway",
+    'Props: Large golden number "1" balloon on wooden stand',
+    "Accessories: Cartoon-themed foil balloons and star-shaped accents",
+  ],
+  "balloon _cocomelon_theme_ring_birthday_decoration.jpg": [
+    "Balloons: Red, purple, blue, green, orange, white balloons; metallic star and cartoon character balloons",
+    'Backdrop: Archway with golden "Happy Birthday" banner',
+    "Decoration: Multicolor balloon arch and clusters around doorway",
+    'Props: Large golden number "3" balloon on wooden stand',
+    "Accessories: Cartoon-themed foil balloons and star-shaped accents",
+  ],
+  "balloon _decoration_baby_shower.jpg": [
+    "Balloons: Pink, blue, gold balloons; themed foil balloons (baby bottle, rattle)",
+    'Backdrop: Curtain with string lights and neon "Baby Shower" sign',
+    "Decoration: Circular balloon arch with attached themed balloons",
+    "Props: Balloon sculptures shaped like babies on either side of the arch",
+  ],
+  "balloon birthday backdrop decoration (57).PNG": [],
+  "Arch_ballon_birthday_decoration.jpg": [
+    "Balloons: Pink, white, black balloons; silver foil letter and number balloons",
+    'Backdrop: Shiny pink fringe curtain with silver foil balloons spelling "6 ANAYA"',
+    "Decoration: Balloon arch around doorway and clusters on the side",
+    "Props: Framed photograph, wall-mounted light fixture",
+  ],
+  "balloon birthday decoration_(55).PNG": [
+    'Balloons: Pink, rose gold, purple balloons; silver foil number balloons "11"',
+    'Backdrop: String light curtain with "HAPPY BIRTHDAY" banner',
+    "Decoration: Balloon arch and columns with butterfly cutouts",
+    "Props: Gold heart-shaped foil balloon, butterfly wall accents",
+  ],
+  "welcome_balloon_decoration.jpg": [
+    "Balloons: Pink, white, gold, maroon balloons; iridescent butterfly foil balloon",
+    'Backdrop: Indoor wall with "WELCOME" metallic pink letter balloons',
+    "Decoration: Balloon clusters around butterfly centerpiece and scattered floor balloons",
+  ],
+  "welcome_baby_ring_decoration.jpg": [
+    "Balloons: Pastel blue, peach, silver balloons",
+    'Backdrop: Circular pink panel with illuminated "Welcome" text and metallic balloon letters spelling "RUDRA"',
+    "Decoration: Balloon arch surrounding the backdrop with pampas grass accents",
+    "Props: Transparent BABY letter boxes filled with balloons",
+  ],
+  "welcome_baby_girlballoon_decoration.jpg": [
+    "Balloons: Pink and white balloons arranged in ceiling clusters and wall accents",
+    'Backdrop: Wall with metallic letter balloons spelling "WELCOME SHAKTI"',
+    "Decoration: Balloon clusters throughout the room and floral rangoli on the floor",
+  ],
+  "welcome_baby_boy_balloon_decoration.jpg": [
+    "Balloons: Blue, white, beige balloons (pastel); themed foil balloons (baby bottles, moon, pointer stars, baby face)",
+    'Backdrop: Vertical blue and white streamers(curtains) with shiny blue balloon letters spelling "WELCOME BABY"',
+    'Decoration: Balloon arch and large balloon structures  and "IT\'S A BOY" baby bottle designs',
+    "Props: Baby-themed foil balloons and star-shaped accents ",
+  ],
+  "welcome_baby_bouque_balloon_decoration.jpg": [
+    "Balloons: Blue and white balloons; metallic blue and silver star-shaped balloons,moon and baby face foil balloons",
+    'Backdrop: Indoor wall with string of metallic blue letter balloons spelling "WELCOME BABY"',
+    "Decoration: Balloon cluster centerpiece with celestial and baby-themed accents",
+    "Props: Baby face balloon, crescent moon balloon",
+  ],
+  "ring_jungle_theme_balloon_birthday decoration.jpg": [
+    "Balloons: Green, orange, yellow, white, brown balloons; cartoon animal face foil balloons (zebra, lion, monkey, elephant, tiger)",
+    "Decoration: Jungle-themed balloon arch and clusters around doorway",
+    'Props: Large golden number "3" balloon',
+  ],
+  "ring_jungle_theme_balloon birthday decoration.jpg": [
+    "Balloons: Green, yellow, white, gold balloons; jungle animal illustrations (lion, monkey, zebra)",
+    'Backdrop: Circular jungle-themed panel with "Happy Birthday Ved Singh Ahlawat" text',
+    "Decoration: Balloon arch and two vertical balloon columns",
+    'Props: Illuminated number "1", zebra cutout, cylindrical cake table',
+  ],
+  "ring_krishna_radha_theme_balloon_birthday_decoration.jpg": [
+    "Balloons: pastel pink, pastel blue, metallic rose gold",
+    "Backdrop: round flex banner with baby theme artwork",
+    "Decoration: circular organic balloon ring",
+    "Stand: balloon pillar stands (left & right)",
+    "Props: cartoon baby theme cutouts",
+    "Neon Sign: Baby Shower LED light",
+  ],
+  "surprise_balloon_birthday_decoration_for_couple.jpg": [
+    'Balloons: Red, black, gold balloons; red foil letter balloons spelling "HAPPY BIRTHDAY" and "love"; gold heart-shaped foil balloons"',
+    "Backdrop: Wall above bed with birthday message and heart accents",
+    "Decoration: Balloon columns on either side of the bed, ceiling clusters, and hanging spiral ribbons",
+    "Props: Bed with balloon decor,Rose petals scattered on the floor, romantic indoor ambiance",
+  ],
+  "ring_butterfly_theme_balloon birthday decoration (93).jpg": [
+    "Balloons: Purple, white, pink balloons; 5pc foil balloon set fairy  balloons; golden butterfly accents",
+    'Backdrop: Circular balloon arch with neon "Happy Birthday" sign',
+    "Decoration: Flower-shaped balloon arrangement, ceiling balloons and streamers",
+    'Props: Mermaid balloon cutout, illuminated number "1", fairy cutout with colorful wings, butterfly balloon sculpture (standy)',
+  ],
+  "butterfly theme birthday balloon decor.jpg": [
+    "Balloons: pastel pink, lavender, peach, light blue",
+    "Foil Balloons: number balloon (2), butterfly shape balloons",
+    "Backdrop: round flex banner with butterfly theme",
+    "Decoration: circular organic balloon arch",
+    "Wall Decor: heart-shaped foil balloons",
+    "Props: butterfly cutouts (3D look)",
+    "Accessories: pastel balloon clusters",
+  ],
+  "ring_boy_balloon birthday_racing_theme_decoration_ring.jpg": [
+    "Balloons: royal blue, black, white, metallic silver",
+    "Foil Balloons: number balloon (6), star foil balloons",
+    "Theme Props: racing car wheel balloon, bike helmet balloon",
+    "Decoration: organic balloon arch with clusters",
+    "Backdrop: plain wall setup with balloon framing",
+    "Neon Sign: Happy Birthday LED light",
+    "Accessories: artificial flower fillers",
+    "Theme Elements: football print balloons",
+  ],
+  "white rose gold birthday balloon decor.jpg": [
+    "Balloons: white, metallic rose gold",
+    "Decoration: circular balloon ring arch",
+    "Neon Sign: Happy Birthday LED light",
+    "Accessories: artificial green leaf vines",
+    "Style: elegant minimal birthday theme",
+    "Setup: indoor staircase area decoration",
+  ],
+  "Happy Anniversary Balloon Decor.jpg": [
+    "Balloons: light pink, metallic gold",
+    "Foil Balloons: none specified",
+    "Theme Props: none specified",
+    "Decoration: circular balloon wreath with artificial green leaves",
+    "Backdrop: glass door or partition",
+    "Neon Sign: Happy Anniversary (red neon)",
+    "Theme Elements: elegant anniversary celebration",
+  ],
+  "1st birthday pastel balloon decor ring.jpg": [
+    "Balloons: pastel pink, lavender, white, metallic silver",
+    "Foil Balloons: silver accent balloons",
+    "Decoration: circular balloon ring arch",
+    "Backdrop: artificial green grass wall",
+    "Lights: warm fairy string lights",
+    "Neon Sign: Happy Birthday LED light",
+    "Props: marquee number 1 light",
+    "Accessories: pastel balloon flower clusters",
+  ],
+  "18th birthday blue silver balloon decor.jpg": [
+    "Balloons: metallic royal blue, silver, chrome silver",
+    "Decoration: circular organic balloon arch",
+    "Backdrop: silver fringe curtain",
+    "Lights: warm marquee number lights (18)",
+    "Neon Sign: Happy Birthday LED light",
+    "Foil Balloons: star foil balloons",
+    "Accessories: disco mirror balls, loose floor balloons",
+  ],
+  "mickey minnie theme birthday balloon decor.jpg": [
+    "Balloons: red, light blue, white, black polka dot",
+    "Decoration: circular organic balloon arch",
+    "Theme Props: Mickey & Minnie character foil balloons",
+    "Foil Balloons: round and accent balloons",
+    "Lights: marquee number lights (3 & 1)",
+    "Neon Sign: Happy Birthday LED light",
+    "Backdrop: curtain drape background",
+    "Style: cartoon theme kids birthday decor",
+  ],
+  "black gold silver birthday balloon decor ring.jpg": [
+    "Balloons: black, metallic gold, silver, nude peach",
+    "Decoration: circular organic balloon ring arch",
+    "Backdrop: silver fringe curtain",
+    "Neon Sign: Happy Birthday LED light",
+    "Accessories: balloon flower clusters",
+    "Style: luxury elegant birthday theme",
+  ],
+  "ring birthday pastel luxury balloon decor.jpg": [
+    "Balloons: pastel peach, teal blue, rose gold,chrome gold",
+    "Decoration: circular organic balloon arch",
+    "Foil Balloons: number balloons (1 & 8)",
+    "Neon Sign: Happy Birthday LED light",
+    "Props: cake stand with balloon base",
+    "Accessories: metallic accent balloons",
+    "Style: pastel luxury  birthday theme",
+  ],
+  "birthday black silver balloon decor ring.jpg": [
+    "Balloons: black, metallic silver, chrome silver",
+    "Decoration: circular organic balloon ring arch",
+    "Neon Sign: Happy Birthday LED light",
+    "Lights: marquee number lights (18)",
+    "Props: gold metal cake stand",
+    "Accessories: artificial white flower fillers",
+    "Style: elegant luxury milestone birthday theme",
+  ],
+  "Happy Retirement Balloon Decor.jpg": [
+    "Balloons: white, gold, silver, green",
+    "FoilBalloons: none specified",
+    "ThemeProps: butterfly decorations",
+    "Decoration: circular balloon arch with clusters",
+    "Backdrop: tiled wall",
+    "NeonSign: Happy Retirement",
+    "Accessories: illuminated marquee numbers '60'",
+    "ThemeElements: retirement milestone celebration",
+  ],
+  "Blue & Silver Birthday Balloon Decor.jpg": [
+    "Balloons: white, light blue, silver, dark blue metallic",
+    "FoilBalloons: metallic star-shaped balloons",
+    "ThemeProps: flower-shaped balloon clusters, disco balls",
+    "Decoration: circular balloon frame with hanging ribbons and white decorative leaves",
+    "Backdrop: curtains with tree pattern, horizontal wall paneling",
+    "NeonSign: Happy Birthday (cursive neon)",
+    "Accessories: balloons scattered on the floor",
+    "ThemeElements: elegant indoor birthday celebration",
+  ],
+
+  "Neutral Pastel Birthday Balloon Decor.jpg": [
+    "Balloons: white, gold, peach, brown",
+    "FoilBalloons: none specified",
+    "ThemeProps: ornamental grasses",
+    "Decoration: circular balloon ring with clusters",
+    "Backdrop: white wall",
+    "NeonSign: Happy Birthday (yellow cursive neon)",
+    "Accessories: none specified",
+    "ThemeElements: elegant and natural birthday celebration",
+  ],
+  "Champagne 45th Birthday Balloon Decor.jpg": [
+    "Balloons: white, gold, silver",
+    "FoilBalloons: champagne bottle, wine glass",
+    "ThemeProps: golden balloon pour effect, small round table",
+    "Decoration: balloon arch with pouring champagne effect",
+    "NeonSign: Happy Birthday",
+    "Accessories: illuminated marquee numbers '45'",
+    "ThemeElements: milestone birthday with celebration theme",
+  ],
+  "Black & Gold Draped Birthday Balloon Decor.jpg": [
+    "Balloons: black, gold",
+    "FoilBalloons: none specified",
+    "ThemeProps: pampas grass",
+    "Decoration: circular metal frame with balloon clusters and draped beige fabric",
+    "Backdrop: black curtain",
+    "NeonSign: Happy Birthday",
+    "Accessories: none specified",
+    "ThemeElements: modern and elegant birthday celebration",
+  ],
+  "Blue Gold 31st Birthday Balloon Decor.jpg": [
+    "Balloons: white, blue, gold",
+    "FoilBalloons: golden number balloons '3' and '1'",
+    "ThemeProps: blue curly ribbons, white decorative leaves",
+    "Decoration: semi-circular balloon arrangement with floor scatter",
+    "Backdrop: dark blue and green curtains, framed pictures",
+    "NeonSign: Happy Birthday",
+
+    "ThemeElements: indoor birthday celebration with festive accents",
+  ],
+  "Butterfly 5th Birthday Balloon Decor ring.jpg": [
+    "Balloons: white, silver, pink, red",
+    "FoilBalloons: large butterfly balloon (blue and purple)",
+    "ThemeProps: illuminated number '5'",
+    "Decoration: balloon arch with clusters and butterfly accent",
+    "Backdrop: green wall with plants and window",
+    "NeonSign: Happy Birthday (cursive neon)",
+
+    "ThemeElements: whimsical birthday celebration for young child",
+  ],
+  "Jungle Rainbow 3rd Birthday Balloon Decor ring.jpg": [
+    "Balloons: red, orange, yellow, green, blue, purple",
+    "FoilBalloons: golden number balloon '3'",
+    "ThemeProps: zebra, giraffe, lion, monkey, elephant, bear with camera cutouts",
+    "Decoration: multicolored balloon arch with jungle animal accents",
+    "Backdrop: indoor curtain backdrop with natural light",
+    "NeonSign: Happy Birthday (cursive neon)",
+    "ThemeElements: vibrant jungle-themed birthday for young child",
+  ],
+  "ring_balloon birthday decoration_cocomelon.jpg": [
+    "Balloons: Red, purple, blue, green, orange, white balloons; metallic star and cartoon character balloons",
+    'Backdrop: Archway with golden "Happy Birthday" banner',
+    "Decoration: Multicolor balloon arch and clusters around doorway",
+    'Props: Large golden number "1" balloon on wooden stand',
+    "Accessories: Cartoon-themed foil balloons and star-shaped accents",
+  ],
+  "Disco Ring Balloon Decor ring_faridabad.jpg": [
+    "Balloons: black, golden, silver",
+    "FoilBalloons: golden disco ball",
+    "ThemeProps: black spiky starburst balloon",
+    "Decoration: circular balloon ring with base clusters",
+    "Backdrop: light green and white curtains with floral pattern",
+    "ThemeElements: festive and creative indoor celebration",
+  ],
+  "butterfly luxury birthday balloon decor.jpg": [
+    "Balloons: metallic copper, white, maroon red",
+    "Decoration: circular balloon ring arch",
+    "Backdrop: fringe curtain",
+    "Neon Sign: Happy Birthday LED light",
+    "Foil Balloons: heart-shaped foil balloon",
+    "Props: gold metal cake stands (2-tier)",
+    "Theme Elements: 3D butterfly cutouts",
+    "Style: luxury elegant birthday theme",
+  ],
+  "gold white star birthday balloon decor.jpg": [
+    "Balloons: chrome gold, white",
+    "Foil Balloons: gold star-shaped foil balloons",
+    "Decoration: circular  balloon ring arch",
+
+    "Neon Sign: Happy Birthday LED light",
+    "Accessories: hanging star strings",
+    "Style: premium elegant birthday theme",
+  ],
+  "Butterfly Pink Birthday Balloon Decor ring.jpg": [
+    "Balloons: pink, white, gold",
+    "FoilBalloons: butterfly decorations",
+    "ThemeProps: tree design backdrop",
+    "Decoration: circular balloon arch with floor scatter",
+    "NeonSign: Happy Birthday (cursive neon)",
+
+    "ThemeElements: whimsical birthday celebration for young child",
+  ],
+  "ring_balloon birthday decoration_faridabad.jpg": [
+    "Balloons: blue, white, gold,kanfatti balloons",
+    "FoilBalloons: butterfly decorations",
+    "ThemeProps: tree design backdrop",
+    "Decoration: circular balloon arch with floor scatter",
+    "NeonSign: Happy Birthday (cursive neon)",
+
+    "ThemeElements: whimsical birthday celebration for young child",
+  ],
+
+  "rainbow pastel birthday balloon decor ring.jpg": [
+    "Balloons: pastel pink, yellow, mint green, baby blue, lavender",
+    "Decoration: circular balloon ring arch",
+    "Neon Sign: Happy Birthday LED light",
+    "Flower: artificial flower accents",
+    "Style: pastel rainbow elegant birthday theme",
+  ],
+  "princess theme 2nd birthday balloon decor.jpg": [
+    "Balloons: pastel rainbow colors (pink, yellow, peach, mint green, baby blue),Bladder pink, purple",
+    "Decoration:  balloon arch ",
+    "Backdrop: princess theme flex banner with cartoon characters",
+    "Theme Props: princess character illustrations",
+    "Occasion: girl birthday kids party",
+    "Style: colorful cartoon princess birthday decor",
+  ],
+  "pokemon theme birthday balloon decor.jpg": [
+    "Balloons: red, yellow, blue, light blue, white",
+    "Decoration: circular  balloon ring arch",
+    "Backdrop: Pokemon theme flex banner with cartoon characters",
+    "Theme Props: Pikachu & Pokemon character cutouts",
+    "Props: illuminated cube boxes spelling name",
+    "Foil Balloons: Pokemon-themed foil balloons",
+    "Style: colorful cartoon kids birthday theme",
+  ],
+  "monkey jungle theme birthday balloon decor.jpg": [
+    "Balloons: green, light green, white, brown, red, metallic gold",
+    "Decoration: jungle-style balloon columns & clusters",
+    "Theme Props: monkey foil balloons",
+    "Backdrop: jungle theme flex banner",
+    "Props: balloon trees with twisted trunks",
+    "Occasion: kids birthday party",
+    "Style: cartoon jungle animal theme decor",
+  ],
+  "minnie mouse theme 3rd birthday balloon decor.jpg": [
+    "Balloons: red, pink, white, peach",
+    "Decoration: balloon arch with side columns",
+    "Theme Props: Minnie Mouse character cutouts",
+    "Foil Balloons: number balloon (3)",
+    "Backdrop: custom birthday message panel on flex banner",
+    "Occasion:  birthday kids party",
+    "Style: cartoon Minnie Mouse birthday decor",
+  ],
+  "jungle safari theme 1st birthday balloon decor.jpg": [
+    "Balloons: green, metallic gold, white, beige, brown",
+    "Decoration: grand o balloon arch",
+    "Backdrop: jungle leaves & animal print panels",
+    "Theme Props: tiger and elephant character cutouts",
+    "Foil / Lights: Happy Birthday neon sign",
+    "Props: cylindrical cake pedestals with jungle prints",
+    "Name Display: marquee letters spelling name",
+    "Occasion: 1st birthday jungle/safari theme",
+    "Style: premium jungle animal birthday decor",
+  ],
+  "jungle safari theme 1st birthday balloon decor faridabad.jpg": [
+    "Balloons: green, yellow, teal",
+    "Decoration: balloon arches and pillars with jungle animal accents",
+    "Backdrop: giraffe and tropical leaf patterns",
+    "Theme Props: cartoon elephant, leopard, lion, monkey, zebra cutouts",
+    "Foil / Lights: Happy Birthday neon sign",
+    "Props: cylindrical stands with jungle-themed prints",
+    "Name Display: illuminated marquee letters spelling 'KHYAATI'",
+    "Occasion: 1st birthday jungle/safari theme",
+    "Style: vibrant and playful jungle animal decor",
+  ],
+  "mundan ceremony jungle theme balloon decor.jpg": [
+    "Balloons: gold, green, white, blue, peach",
+    "Decoration: jungle-themed balloon arch and backdrop",
+    "Backdrop: cartoon jungle animals and giraffe illustrations",
+    "Theme Props: lion, giraffe, zebra, monkey, hippo cutouts",
+    "Foil / Lights: decorative lighting",
+    "Props: podium with blue cloth",
+    "Name Display: printed name 'ANANT' on backdrop",
+    "Occasion: Mundan Ceremony with jungle theme",
+    "Style: playful and colorful indoor celebration",
+  ],
+  "jungle theme entry gate balloon decor.jpg": [
+    "Balloons: green, yellow, peach, white, lavender",
+    "Decoration: large balloon arch with jungle animal faces",
+
+    "Theme Props: monkey, giraffe, lion, zebra, tiger cartoon faces",
+
+    "Props: welcome board with jungle animals and balloon accents",
+    "Name Display: printed welcome message for 'Anant is turning 1'",
+    "Occasion: 1st birthday jungle celebration",
+    "Style: vibrant and immersive entry gate decor",
+  ],
+  "holi theme balloon decor for office or school.jpg": [
+  "Balloons: red, pink, blue, white, green, orange, purple, gold",
+  "Decoration: multicolored balloon arch with festive clusters",
+  "Backdrop: bright yellow banner with 'HOLI' and 'Festival of Colours' text",
+  "Theme Props: traditional pots with colored powders, hanging Indian ornaments",
+  
+  "Props: cultural symbols and festive motifs",
+  
+  "Occasion: Holi celebration in office or school",
+  "Style: cheerful, inclusive, and culturally vibrant decor"
+],
+"black gold crescent balloon decor.jpg": [
+  "Balloons: gold, black, transparent with gold confetti",
+  "Decoration: crescent-shaped balloon arch on circular metal frame",
+  "big balloons: bladder balloons, gold confetti balloons",
+  "Occasion: elegant celebration or formal event",
+  "Style: premium black and gold balloon decor"
+],
+"haldi ceremony balloon decor.jpg": [
+  "Balloons: yellow, white, gold",
+  "Decoration: balloon columns and floral clusters",
+  "Backdrop: silver metallic fringe curtain",
+  "Theme Props: golden star and heart-shaped balloons",
+  "Foil: golden balloon letters spelling 'HALDI'",
+  "Name Display: 'HALDI' in balloon letters",
+  "Occasion: Haldi ceremony (pre-wedding celebration)",
+  "Style: festive and traditional yellow-gold decor"
+],
+"butterfly pastel theme 1st birthday balloon decor faridabad.jpg": [
+  "Balloons: pastel pink, purple, blue, yellow, white",
+  "Decoration: balloon arch with butterfly accents and photo pillars",
+  "Theme Props: butterfly decorations, baby photo prints",
+  "Foil / Lights: Happy Birthday neon sign, illuminated number '1'",
+  "Props: marquee balloon letters spelling 'ADVIKA'",
+  "Name Display: golden(foil) balloon letters 'ADVIKA'",
+  "Occasion: 1st birthday celebration",
+  "Style: joyful and vibrant pastel butterfly decor"
+],
+"donut pastel theme  birthday balloon decor.jpg": [
+  "Balloons: pastel pink, purple, blue, cream",
+  "Decoration: balloon clusters with star and donut-shaped balloons",
+  "Backdrop: white streamer curtain with 'HAPPY BIRTHDAY' banner in pink and yellow",
+  "Theme Props: donut balloons with sprinkles, round 'Happy Birthday' balloons",
+  "Foil: metallic star balloons, golden number '4'",
+  "Occasion: birthday celebration",
+  "Style: cheerful and colorful pastel donut party decor"
+],
+"car racing theme  birthday cake table decor.jpg": [
+  "Balloons: red, black, white, silver",
+  "Decoration: balloon arch with Cars-themed foil balloons and star accents",
+  "Backdrop: cartoon-style road with vehicles (blue car, red car, truck)",
+  "Cake table: racing flag checkered cylinder stand",
+  "Lights: illuminated number '8'",
+  "Props: themed cake table with racing elements",
+
+  "Occasion: birthday car and racing theme",
+  "Style: energetic and playful racing decor"
+],
+"car boot birthday balloon decor.jpg": [
+  "Balloons: red, white, pink, metallic purple",
+  "Decoration: balloon-filled car trunk with spiral ribbons",
+  "Backdrop: hanging 'Happy Birthday' banner with cakes and party hats",
+  "Theme Props: glittery golden star, shiny decorative elements",
+  "Lights: 3 LED lights bottle neck in the trunk",
+  "Props: triangular flag banner spelling 'KAJAL'",
+  "Name Display: 'KAJAL' on individual flags",
+  "Occasion: birthday celebration",
+  "Style: creative and festive car trunk or boot decor"
+],
+"car trunk birthday balloon decor.jpg": [
+  "Balloons: metallic blue, silver, white, gold",
+  "Decoration: balloon-filled car trunk with spiral ribbons",
+  "Backdrop: glittery 'Happy Birthday' banner",
+  "Theme Props: large gold balloon with 'three' text",
+  "Lights: string lights in trunk",
+  "Props: triangular flag banner spelling 'SAMAIRA'",
+  "Name Display: 'SAMAIRA' on blue flags with yellow letters",
+  "Occasion: birthday celebration",
+  "Style: festive and creative car trunk decor"
+],
+"metallic blue 23rd birthday balloon decor.jpg": [
+  "Balloons: metallic blue, silver, white",
+  "Decoration: balloon arrangement with layered textures and starburst accents",
+  "Theme Props: three large silver starburst decorations",
+  "Foil: silver foil number balloons '2' and '3'",
+  "Occasion: 23rd birthday celebration",
+  "Style: bold and festive metallic balloon decor"
+],
+"doraemon theme birthday balloon decor.jpg": [
+  "Balloons: blue, white, gold",
+  "Decoration: balloon arch with Doraemon character balloons and star-shaped metallic accents",
+  "Backdrop: silver fringe curtain",
+  "Theme Props: Doraemon cartoon balloons",
+  "Foil : metallic blue star balloons",
+  "Name Display: 'HAPPY BIRTHDAY' banner in yellow on blue pennants",
+  "Occasion: birthday celebration",
+  "Style: cheerful and character-themed decor for kids"
+],
+"butterfly doraemon theme 5th birthday balloon decor.jpg": [
+  "Balloons: pastel pink, purple, green, blue",
+  "Decoration: balloon arch with butterfly and Doraemon accents",
+  "Backdrop: silver streamers with balloon letters spelling 'HAPPY BIRTHDAY HEER'",
+  "Theme Props: Doraemon character balloons, butterfly-shaped balloons, star-shaped balloons",
+  "Foil: golden number '5' balloon",
+  "Name Display: balloon letters spelling 'HEER'",
+  "Occasion: 5th birthday celebration",
+  "Style: colorful and joyful pastel cartoon-themed decor"
+],
+"space theme  birthday balloon decor.jpg": [
+  "Balloons: orange, blue, black, red,  white, silver",
+  "Decoration: balloon arch and towers with planet and star motifs",
+  "Backdrop: blue metallic fringe curtain with 'HAPPY BIRTHDAY' banner in yellow",
+  "Theme Props: astronaut figure, crescent moons, star-shaped balloons",
+  "Foil: golden number '8' balloon",
+  "Props: blue panel (customer) with white and silver stars and moons",
+  "Occasion: birthday space/astronaut theme",
+  "Style: vibrant and imaginative cosmic decor"
+],
+"shyam mandir balloon decor gate.jpg": [
+  "Balloons: red, orange, yellow, white, pink",
+  "Decoration: balloon arch framing religious altar",
+  "Theme Props: deity idol adorned with marigold garlands and offerings",
+  "Occasion: devotional celebration or puja",
+  "Style: vibrant and spiritual temple decor"
+],
+"welcome baby boy balloon decor.jpg": [
+  "Balloons: pastel blue, beige,chrome blue",
+  "Decoration: balloon arch with baby-themed accents",
+  "Backdrop: blue and beige balloon wall with 'WELCOME BABY' foil letters",
+  "Theme Props: baby figure balloon, baby bottle-shaped balloons with 'IT'S A BOY' text",
+  "Foil: blue foil letter balloons spelling 'WELCOME BABY'",
+  "Props: star-shaped balloons and baby-themed elements",
+
+  "Occasion: baby shower or newborn welcome",
+  "Style: joyful and charming baby boy celebration decor"
+],
+"black white  birthday balloon decor.jpg": [
+  "Balloons: black, white, silver",
+  "Decoration: balloon arch and flower-shaped clusters",
+  "Backdrop: shiny silver fringe curtain",
+  "Theme Props: silver heart and star-shaped metallic balloons",
+  "Foil: black balloon letters spelling 'HAPPY BIRTHDAY'",
+  
+  "Name Display: 'HAPPY BIRTHDAY' in balloon letters",
+  "Occasion: birthday celebration",
+  "Style: elegant and monochrome photo booth decor"
+],
+"black gold 30th birthday room balloon decor.jpg": [
+  "Balloons: black, gold, red",
+  "Decoration: wall-mounted balloon arrangement above bed",
+  "Backdrop: bedroom wall with 'HAPPY BIRTHDAY' banner in black and gold",
+  "Theme Props: large champagne bottle balloon with 'Celebrate!' text, gold star balloon",
+  "Foil: golden number '30' balloon,love cursive foil balloon",
+  "Occasion: 30th birthday celebration",
+  "Style: festive and intimate room decor with premium accents"
+],
+"white gold anniversary balloon decor.jpg": [
+  "Balloons: white, gold",
+  "Decoration: balloon cluster with star-shaped and round balloons",
+  "Theme Props: martini glass balloon with black olive, 'Happy Anniversary' round balloon, 'CHEERS' foil balloon",
+  "Foil: themed foil balloons with celebratory text",
+  "Occasion: anniversary celebration",
+  "Style: elegant and festive indoor decor"
+],
+"better together pampas balloon arch decor.jpg": [
+  "Balloons: metallic rose gold, black, white",
+  "Decoration: circular arch with pampas grass and balloon clusters",
+  "Theme Props: pampas grass, neon sign 'Better Together'",
+  "Lights: yellow neon cursive text",
+  "Props: two ground spotlights aimed at arch",
+  "Name Display: 'Better Together' neon sign",
+  "Occasion: wedding, engagement, or celebration",
+  "Style: elegant and romantic natural-modern fusion decor"
+],
+"cocomelon theme 4th birthday balloon decor.jpg": [
+  "Balloons: rainbow colors (red, orange, yellow, green, blue, purple)",
+  "Decoration: balloon arch with CoComelon character cutouts",
+  "Backdrop: printed display with 'CoComelon Aarna is 4' and cartoon characters",
+  "Theme Props: cylindrical stand with 'Aarna 4' and CoComelon graphics",
+  "Lights: illuminated number '4' on top of stand",
+  "Props: character cutouts and themed signage",
+  "Name Display: 'Aarna' on backdrop and stand",
+  "Occasion: birthday celebration",
+  "Style: vibrant and playful cartoon-themed decor"
+],
+"mickey mouse theme birthday balloon decor ring.jpg": [
+  "Balloons: red, black, white",
+  "Decoration: balloon arch with Mickey Mouse balloon sculptures",
+  "Backdrop: wall setup with 'Happy Birthday' neon sign",
+  "Theme Props: four Mickey Mouse balloon figures",
+  "Lights: 'Happy Birthday' neon sign",
+  "Props: ceiling and wall balloon arrangements",
+  "Occasion: birthday celebration",
+  "Style: playful and character-themed decor for kids"
+],
+"rainbow pastel 1st birthday balloon decor.jpg": [
+  "Balloons: blue, white, yellow, purple, peach",
+  "Decoration: circular balloon arch with rainbow cloud accents",
+  "Backdrop: white wall with string lights and neon 'Happy Birthday' sign",
+  "Theme Props: rainbow cloud balloons, printed 'Happy Birthday' round balloons",
+  "Lights: illuminated number '1', neon 'Happy Birthday' sign",
+  "Occasion: birthday celebration",
+  "Style: cheerful and colorful pastel milestone decor"
+],
+"pool party theme 3rd birthday balloon decor for.jpg": [
+  "Balloons: white, blue, orange, yellow, green, red",
+  "Decoration: balloon arch with beach ball-style balloons",
+  "Backdrop: blue splash design with 'ADHIRAJ'S POOL PARTY' in orange and white",
+  "Theme Props: cylindrical stands with beach ball, flip-flops, and popsicle graphics",
+  "Lights: illuminated number '3'",
+  "Props: inflatable pool rings, artificial pineapples, flowers, green wall",
+  "Name Display: 'ADHIRAJ'S POOL PARTY' on backdrop",
+  "Occasion: birthday pool party celebration",
+  "Style: tropical and vibrant summer-themed decor"
+],
+"princess theme pastel 1st birthday balloon decor ring.jpg": [
+  "Balloons: pastel pink, purple, blue, gold",
+  "Decoration: circular balloon arch with string lights and princess cutouts",
+  "Backdrop: green foliage with neon 'Happy Birthday' sign",
+  "Theme Props: cardboard cutouts of Cinderella, Belle, Ariel, and other princesses",
+  "Lights: neon 'Happy Birthday' sign, illuminated number '1'",
+  "Props: balloon-covered table, small round table with golden top",
+  "Occasion: birthday celebration",
+  "Style: dreamy and magical princess-themed pastel decor"
+],
+"black yellow birthday room balloon decor.jpg": [
+  "Balloons: black, yellow, red",
+  "Decoration: ceiling and wall balloon clusters with flower-shaped arrangements",
+  "Backdrop: wall above bed with balloon letters spelling 'HAPPY BIRTHDAY KAVITA'",
+  "Theme Props: red rose petals arranged in heart shape and 'LOVE' text on golden runner",
+  "Foil: two large red heart-shaped balloons",
+  "Name Display: 'KAVITA' in golden balloon letters",
+  "Occasion: birthday celebration",
+  "Style: romantic and personalized bedroom decor"
+],
+"jungle theme 3rd birthday balloon decor for Mahi.jpg": [
+  "Balloons: teal, white, gold, green",
+  "Decoration: circular stage with balloon arch and jungle animal accents",
+  "Backdrop: neon 'Happy Birthday' sign behind stage",
+  "Theme Props: tiger balloon, giraffe balloon, butterfly balloon, star-shaped balloons",
+  "Foil / Lights: large gold foil letters spelling 'MAHI', neon 'Happy Birthday' sign",
+  "Props: circular platform stage",
+  "Name Display: 'MAHI' in gold foil balloons",
+  "Occasion: birthday celebration",
+  "Style: vibrant and playful jungle-themed decor"
+],
+"crescent moon welcome baby decor ring.jpg": [
+  "Balloons: blue, white, gold",
+  "Decoration: balloon clusters with crescent moon and cloud shapes",
+  "Backdrop: printed panel with 'A new light in our lives Ayaan' text",
+  "Theme Props: orange stars, crescent moon, cloud cutouts",
+  "Name Display: 'Ayaan' on backdrop",
+  "Occasion: baby shower or newborn welcome",
+  "Style: dreamy and celestial-themed decor"
+],
+"pastel moon star 1st birthday balloon decor ring faridabad.jpg": [
+  "Balloons: pastel pink, purple, blue, yellow, white",
+  "Decoration: balloon arch with metallic star and crescent moon balloons",
+  "Backdrop: neon 'Happy Birthday' sign framed by balloon arch",
+  "Theme Props: transparent rectangular stand with balloon accents",
+  "Lights: illuminated number '1', neon 'Happy Birthday' sign",
+  "Occasion: 1st birthday celebration",
+  "Style: dreamy and celestial pastel decor"
+],
+"frozen elsa theme birthday balloon decor.jpg": [
+  "Balloons: white, silver, blue, purple",
+  "Decoration: circular balloon arch with star and heart-shaped balloons",
+  "Backdrop: sheer white curtain with neon 'Happy Birthday' sign and balloon icon",
+  "Theme Props: Elsa face cutout at top center, full-body Elsa cutout on right",
+  "Foil / Lights: neon 'Happy Birthday' sign",
+  "Occasion: birthday celebration",
+  "Style: magical and character-themed Frozen decor"
+],
+"silver glam 25th birthday balloon decor.jpg": [
+  "Balloons: silver, white",
+  "Decoration: balloon clusters with disco balls and star-shaped accents",
+  "Backdrop: shimmering silver sequin wall with neon 'Happy Birthday' sign",
+  "Theme Props: disco balls, large star balloons",
+  "Foil / Lights: illuminated number '25', neon 'Happy Birthday' sign",
+  "Occasion: 25th birthday celebration",
+  "Style: elegant and glamorous milestone decor"
+],
+"pool party back to school balloon decor.jpg": [
+  "Balloons: turquoise blue, yellow, white, orange, pink, purple",
+  "Decoration: balloon clusters around backdrop",
+  "Backdrop: custom pool party theme panel",
+  "Theme Props: sun cutout, palm tree cutout",
+  "Props: inflatable beach ball decor",
+  "Occasion: pool party / back to school celebration",
+  "Style: colorful outdoor summer theme decor"
+],
+"burgundy gold birthday balloon decor.jpg": [
+  "Balloons: burgundy maroon, metallic gold",
+  "Decoration: balloon clusters",
+  "Backdrop: gold sequin shimmer panel",
+  "Neon Sign: Happy Birthday LED light",
+  "Props: white cylindrical cake pedestal",
+  "Accessories: artificial gold leaf fans",
+  "Style: luxury minimal birthday theme"
+],
+"unicorn theme birthday balloon decor.jpg": [
+  "Balloons: pastel pink, lavender, purple, baby blue",
+  "Decoration: circular  balloon ring arch",
+  "Theme Props: unicorn face & unicorn foil balloons",
+  "Foil Balloons: star-shaped foil balloons",
+  "Name Display: gold foil letter balloons spelling name",
+  "Neon Sign: Happy Birthday LED light",
+  "Style: colorful unicorn kids birthday theme"
+],
+"rose gold 25th birthday balloon decor.jpg": [
+  "Balloons: rose gold, blush pink, metallic copper",
+  "Decoration: organic balloon arch",
+  "Backdrop: rose gold sequin shimmer panel",
+  "Neon Sign: Happy Birthday LED light",
+  "Lights: marquee number lights (25)",
+  "Props: gold cylindrical cake pedestal",
+  "Style: luxury rooftop birthday theme"
+],
+"silver_black_12th_birthday_balloon_decor.jpg": [
+  "Balloons: silver chrome, black, metallic grey",
+  "Decoration: balloon garland with disco balls",
+  "Backdrop: silver sequin shimmer wall",
+  "Neon Sign: Happy Birthday warm LED",
+  "Lights: marquee number lights (12)",
+  "Props: black cylindrical cake pedestal",
+  "Style: modern luxury birthday theme"
+],
+"romantic_bedroom_23rd_birthday_balloon_surprise.jpg": [
+  "Balloons: peach, white, transparent helium balloons on ceiling",
+  "Decoration: ceiling balloon fill with ribbon drops",
+  "Bed Decor: white net canopy with warm fairy lights",
+  "Theme: romantic birthday room surprise",
+  "Foil Balloons: golden Happy Birthday letter balloons",
+  "Number Balloons: gold foil 23 balloons",
+  "Heart Balloons: red heart foil balloons",
+  "Floor Decor: balloon bunches near bed",
+  "Lighting: warm fairy lights for cozy ambiance",
+  "Occasion: 23rd birthday celebration"
+],
+"blue_theme_5th_birthday_balloon_backdrop.jpg": [
+  "Balloons: blue, light blue, white and purple balloon clusters",
+  "Backdrop: blue and white metallic fringe curtain",
+  "Theme: blue themed kids birthday decoration",
+  "Foil Balloons: golden Happy Birthday letter balloons",
+  "Number Balloons: gold foil 5 balloon",
+  "Star Balloons: silver star foil balloons",
+  "Photo Balloons: personalized photo balloons attached",
+  "Arch Style: balloon arch with side pillars",
+  "Occasion: 5th birthday celebration",
+],
+"pastel_unicorn_theme_birthday_balloon_backdrop.jpg": [
+  "Balloons: pastel balloons in pink, lavender, mint, yellow and peach shades",
+  "Theme: unicorn themed kids birthday decoration",
+  "Backdrop: warm white curtain with fairy lights",
+  "Foil Balloons: unicorn face foil balloons",
+  "Heart Balloons: pink heart-shaped foil balloons",
+  "Name Balloons: golden foil letter balloons spelling MAYRA",
+  "Banner: Happy Birthday hanging banner",
+  "Balloon Arch: full pastel balloon arch with side pillars",
+  "Occasion: kids birthday / unicorn birthday party",
+  "Setup Area: indoor hall or living room birthday backdrop"
+],
+"rainbow pastel 1st birthday balloon decor with cloud accents.jpg": [
+  "Balloons: white, blue, yellow, pink, purple",
+  "Decoration: circular balloon arch with rainbow and cloud elements",
+  "Backdrop: neon-style 'Happy Birthday' sign with string lights",
+  "Theme Props: rainbow balloon with clouds, foil 'Happy Birthday' balloons",
+  "Foil / Lights: illuminated number '1', neon 'Happy Birthday' sign",
+  "Occasion: 1st birthday celebration",
+  "Style: cheerful and vibrant pastel decor"
+],
+"spiderman theme birthday balloon decor.jpg": [
+  "Balloons: red, blue, silver",
+  "Decoration: balloon columns and arches with Spider-Man face and themed prints",
+  "Backdrop: silver fringe curtain with blue balloon letters spelling 'HAPPY BIRTHDAY'",
+  "Theme Props: Spider-Man face balloon, round Spider-Man print balloons, red star-shaped balloons",
+  "Foil / Lights: none specified",
+  "Occasion: birthday celebration",
+  "Style: bold and action-packed superhero-themed decor"
+],
+"gold white birthday balloon decor with fringe backdrop.jpg": [
+  "Balloons: yellow, white, gold",
+  "Decoration: balloon garland above backdrop and balloon columns with gold star toppers",
+  "Backdrop: metallic fringe curtain with gold foil 'HAPPY BIRTHDAY' balloons",
+  "Theme Props: gold star-shaped balloons",
+  "Foil: gold foil letter balloons spelling 'HAPPY BIRTHDAY'",
+  "Occasion: birthday celebration",
+  "Style: cozy and festive indoor decor with metallic accents"
+],
+"travel adventure theme 2nd birthday balloon decor for Lavyansh.jpg": [
+  "Balloons: white, blue, silver",
+  "Decoration: balloon arch with cloud and boat cutouts",
+  "Backdrop: neon 'Happy Birthday' sign centered in arch",
+  "Theme Props: cloud with paper boat, blue car cutout, hot air balloons hanging from ceiling",
+  "Foil / Lights: illuminated number '2', neon 'Lavyansh' name sign",
+  "Props: cylindrical white cake pedestal",
+  "Name Display: 'Lavyansh' in neon lights",
+  "Occasion: birthday celebration",
+  "Style: whimsical and adventurous travel-themed decor"
+],
+"silver blue black butterfly birthday balloon decor.jpg": [
+  "Balloons: metallic silver, shiny blue, glossy black",
+  "Decoration: circular frame with balloon clusters, artificial white flowers, and iridescent butterfly accents",
+  "Backdrop: plain white wall and floor",
+  "Theme Props: butterfly decorations, white floral elements",
+  "Foil / Lights: black sign with gold cursive 'Happy Birthday' text",
+  "Occasion: birthday celebration",
+  "Style: elegant and artistic indoor decor"
+],
+"teal gold birthday balloon arch with confetti and stars.jpg": [
+  "Balloons: teal, gold, transparent with confetti",
+  "Decoration: balloon arch with flower-like clusters and gold star-shaped balloons",
+  "Backdrop: silver metallic streamers",
+  "Theme Props: confetti-filled balloons, gold stars",
+  "Foil: black banner with gold 'HAPPY BIRTHDAY' letters",
+  "Occasion: birthday celebration",
+  "Style: cheerful and shimmering festive decor"
+],
+"purple gold silver 10th birthday balloon decor with crown.jpg": [
+  "Balloons: gold, silver, purple, pink",
+  "Decoration: balloon clusters with star-shaped and crown-shaped accents",
+  "Backdrop: vertical string lights with golden balloon text 'happy birthday'",
+  "Theme Props: silver foil number '10', crown balloon, star balloons",
+  "Foil: golden balloon letters, silver number '10', string lights",
+  "Occasion: birthday celebration",
+
+],
+"pink white romantic birthday room decor with rose petals.jpg": [
+  "Balloons: pink, white, red",
+  "Decoration: ceiling and wall balloon clusters with heart-shaped accents",
+  "Backdrop: dark curtains with pink metallic 'HAPPY BIRTHDAY' letter balloons",
+  "Theme Props: rose petals arranged in heart shape and 'LOVE' text on bed",
+  "Foil: red balloon script spelling 'love'",
+  "Occasion: birthday celebration or romantic surprise",
+  "Style: intimate and romantic room decor"
+],
+"burgundy white birthday balloon decor.jpg": [
+  "Balloons: white",
+  "Decoration: balloon clusters",
+  "Backdrop: gold sequin shimmer panel",
+  "Neon Sign: Happy Birthday LED light",
+  "Props: white cylindrical cake pedestal",
+  "Accessories: artificial gold leaf fans",
+  "Style: luxury minimal birthday theme"
+],
+"navy_gold_graduation_balloon_backdrop_class_2023.jpg": [
+  "Balloons: navy blue, white and metallic gold balloons in  clusters",
+  "Theme: graduation / school farewell celebration",
+  "Backdrop: gold shimmer sequin wall center panel",
+  "Side Panels: navy blue and white custom boards",
+  "Text Board Left: Class of 2023 in golden lettering",
+  "Text Board Right: Promoción 168 written in blue",
+  "Balloon Arch: semi balloon arch framing both sides",
+  "Decor Elements: dried pampas grass accents for premium look",
+  "Color Palette: navy blue, gold and white combination",
+  "Occasion: graduation ceremony / school farewell / class celebration",
+  "Setup Area: indoor school hall or auditorium photo backdrop"
+],
+"black_white_gold_balloon_arch_sequin_backdrop.jpg": [
+  "Balloons: black, white and metallic gold balloons in mixed sizes",
+  "Backdrop: gold  sequin curtain backdrop",
+  "Balloon Arch: balloon arch placed on left and top side",
+  "Balloon Style: combination of matte and chrome balloons",
+  "Color Palette: black, white and gold premium combination",
+  "Design Type: asymmetrical balloon arch with backdrop curtain",
+  "Occasion: birthday party, anniversary, engagement or corporate event",
+  "Look & Feel: classy, modern and high-end decoration",
+  "Best For: milestone birthdays, cocktail parties and photo zones"
+],
+"silver_black_white_balloon_sequin_birthday_setup.jpg": [
+  "Balloons: silver chrome, matte black and white balloons in mixed sizes",
+  "Backdrop: silver mirror sequin shimmer wall",
+  "Neon Sign: warm white 'Happy Birthday' neon light",
+  "Number Props: LED marquee number 24",
+  "Color Palette: silver, black and white modern tones",
+  "Design Type: luxury photo backdrop setup",
+  "Setup Area: outdoor patio / lawn / terrace",
+  "Occasion: adult birthday, milestone birthday celebration",
+  "Look & Feel: classy, premium and Instagram-worthy setup",
+  "Best For: night parties, photo shoots and elegant celebrations"
+],
+"dusty_blue_balloon_neon_sequin_celebration_setup.jpg": [
+  "Balloons: dusty blue matte balloons in multiple sizes",
+  "Backdrop: vertical gold mirror sequin shimmer panel",
+  "Neon Sign: warm white neon text 'LET’S Celebrate'",
+  "Balloon Arrangement: balloon clusters on both sides and base",
+  "Color Palette: dusty blue, soft gold and warm white",
+  
+  "Occasion: birthday party, anniversary, engagement, milestone event",
+  "Look & Feel: elegant, soft-toned and classy luxury setup",
+  "Best For: modern photoshoots, reels, intimate celebrations"
+],
+"white_gold_silver_luxury_birthday_balloon_setup.jpg": [
+  "Balloons: white, champagne gold and silver chrome balloons in mixed sizes",
+  "Backdrop: premium white panel backdrop with classic molding design",
+  "Neon Sign: warm white neon text 'Happy Birthday'",
+  "Balloon Arrangement: organic balloon garland on right side and base clusters",
+  "Accent Decor: large champagne gold fabric bow on backdrop",
+  "Balloon Style: mix of matte, pearl and chrome finish balloons",
+  "Color Palette: white, champagne gold and metallic silver",
+  "Occasion: birthday party, adult birthday, milestone celebration",
+  "Best For: luxury photoshoots, reels, elegant birthday celebrations"
+],
+"black_gold_luxury_birthday_balloon_backdrop.jpg": [
+  "Balloons: black and metallic gold balloons in mixed sizes",
+  "Backdrop: premium gold sequin shimmer wall backdrop",
+  "Neon Sign: warm yellow neon text 'Happy Birthday'",
+  "Balloon Arrangement: balloon arch covering top and right side",
+  "Accent Decor: metallic gold starburst foil accents and palm leaf props",
+  "Color Palette: black, metallic gold, warm yellow highlights",
+  "Pedestal: black cylindrical cake / display stand",
+  "Occasion: adult birthday party, milestone birthday, luxury celebration",
+],
+"silver_white_engagement_balloon_backdrop.jpg": [
+  "Balloons: metallic silver, pearl white and chrome balloons in mixed sizes",
+  "Backdrop: vertical gold sequin shimmer wall panel",
+  "Neon Sign: warm white neon text 'We're Engaged'",
+  "Accent Decor: dried palm leaves and pampas grass for modern elegance",
+  "Color Palette: silver, white, champagne gold tones",
+  "Lighting: warm ambient lighting with LED floor outline",
+  "Setup Area: indoor lounge, banquet hall, hotel or premium home setup",
+  "Occasion: engagement ceremony, proposal setup, ring ceremony",
+  "Best For: couple photoshoot, proposal reels, engagement celebration"
+],
+"pastel_chrome_18th_birthday_balloon_ring_setup.jpg": [
+  "Balloons: pastel peach, baby blue, rose gold chrome and metallic gold balloons in mixed sizes",
+  "Backdrop Shape: circular balloon ring (balloon arch style)",
+  "Neon Sign: warm yellow neon text 'Happy Birthday'",
+  "Number Balloon: silver foil number '18' balloon",
+  "Table Prop: golden metal cake stand table with balloon base decor",
+  "Color Palette: peach, pastel blue, rose gold, metallic gold and silver",
+  "Occasion: 18th birthday celebration", 
+  "Best For: birthday photoshoot, reels, cake cutting ceremony"
+],
+"pink blue gold baby shower balloon decor with Oh Baby neon.jpg": [
+  "Balloons: pink, blue, gold, transparent with confetti",
+  "Decoration: circular balloon arch with baby-themed foil balloons and gold star accents",
+  "Backdrop: neon 'Oh Baby' sign centered in arch",
+  "Theme Props: baby face balloons, baby bottle balloons, star balloons, decorative blocks with 'BABY' letters",
+  "Foil / Lights: neon 'Oh Baby' sign, confetti balloons",
+  "Occasion: baby shower celebration",
+  "Style: joyful and detailed baby-themed decor"
+],
+"purple pink fairy mermaid 1st birthday balloon decor.jpg": [
+  "Balloons: purple, pink, white, gold",
+  "Decoration: circular balloon arch with golden butterfly and metallic star accents",
+  "Backdrop: neon 'Happy Birthday' sign inside arch",
+  "Theme Props: fairy and mermaid character cutouts",
+  "Foil / Lights: illuminated number '1', neon 'Happy Birthday' sign",
+  "Occasion: 1st birthday celebration",
+  "Style: whimsical and magical fairy-tale themed decor"
+],
+"jungle animal 1st birthday standy balloon decor with monkey and lion.jpg": [
+  "Balloons: green, yellow, orange, white, gold",
+  "Decoration: balloon  standy with flower shapes and animal print accents",
+  "Theme Props: monkey balloon, lion balloon, golden number '1' balloon",
+  "Foil / Lights: golden number '1' balloon",
+  "Occasion: birthday celebration",
+  "Style: cheerful and jungle-themed decor with animal characters"
+],
+"blue silver moon star 2nd birthday balloon decor.jpg": [
+  "Balloons: blue, silver",
+  "Decoration: balloon clusters in flower-like patterns with star and crescent moon accents",
+  "Backdrop: shiny blue fringe curtain with silver foil 'HAPPY BIRTHDAY 2' balloons",
+  "Theme Props: silver star-shaped balloons, crescent moon balloon",
+  "Foil / Lights: silver foil letter and number balloons",
+  "Occasion: birthday celebration",
+  "Style: celestial and festive indoor decor"
+],
+"pink purple birthday balloon decor for Mummy.jpg": [
+  "Balloons: pink, purple, lavender",
+  "Decoration: balloon clusters in flower-like patterns and bunches",
+  "Backdrop: shiny pink fringe curtain with colorful 'HAPPY BIRTHDAY' banner",
+  "Theme Props: pink flags spelling 'MUMMY'",
+  "Name Display: 'MUMMY' on pink flags",
+  "Occasion: birthday celebration for mother",
+  "Style: vibrant and heartfelt family-themed decor"
+],
+"rose gold white silver 15th birthday balloon decor with party icons.jpg": [
+  "Balloons: rose gold, white, silver",
+  "Decoration: balloon arrangement with star, party hat, and confetti graphic balloons",
+  "Backdrop: wall beside window with rose gold foil 'happy birthday' balloons",
+  "Theme Props: large rose gold number '15', round balloon with 'HAPPY Birthday' and confetti graphics",
+  "Foil: rose gold foil letters, metallic number balloons",
+  "Occasion: birthday celebration",
+
+],
+"rainbow gradient birthday balloon arch with black banner.jpg": [
+  "Balloons: red, purple, yellow, green, peach",
+  "Decoration: circular balloon arch with gradient color arrangement",
+  "Theme Props: black banner with yellow 'HAPPY BIRTHDAY' letters",
+  "Occasion: birthday celebration",
+  "Style: vibrant and cheerful rainbow-themed decor"
+],
+"cricket theme 10th birthday balloon decor with cartoon batsman.jpg": [
+  "Balloons: green, peach, blue, white, red, turquoise",
+  "Decoration: circular balloon arch with red cricket ball at top center",
+  "Theme Props: cartoon cutout of child in cricket gear, cricket stumps and bat cutout",
+  "Foil / Lights: neon 'Happy Birthday' sign, illuminated numbers '1' and '0'",  
+  "Occasion: birthday celebration",
+  "Style: sporty and personalized cricket-themed decor"
+],
+"blue silver white 2nd birthday balloon decor for Sultan.jpg": [
+  "Balloons: metallic blue, silver, white",
+  "Decoration: circular balloon arrangement with name and number balloons",
+  "Backdrop: neon 'Happy Birthday' sign inside balloon circle",
+  "Theme Props: silver balloons spelling 'SULTAN', metallic blue number '2'",
+  "Foil / Lights: neon 'Happy Birthday' sign, metallic number and letter balloons",
+  "Name Display: 'SULTAN' in silver balloons",
+  "Occasion: birthday celebration",
+  "Style: bold and personalized milestone decor"
+],
+"green gold white 1st birthday balloon decor for Raunak.jpg": [
+  "Balloons: green, gold, yellow, white",
+  "Decoration: balloon arch around illustrated baby backdrop",
+  "Backdrop: illustrated baby in high chair with 'Happy Birthday RAUNAK' text",
+  "Theme Props: cylindrical stand with green leaf pattern",
+  "Foil / Lights: illuminated number '1'",
+  "Name Display: 'RAUNAK' on backdrop",
+  "Occasion: birthday celebration",
+  "Style: personalized and playful baby-themed decor"
+],
+"animal theme 1st birthday balloon decor for Naavish.jpg": [
+  "Balloons: blue, red, orange, green, gold, white",
+  "Decoration: balloon arch with animal illustrations and colorful accents",
+  "Backdrop: 'NAAVISH TURNS 1' text with cartoon animals including hedgehog, panda, koala, deer",
+  "Theme Props: stacked blocks with 'BABY' letters, cylindrical stands with 'N' and 'K' and animal prints",
+  "Foil / Lights: illuminated number '1'",
+  "Name Display: 'NAAVISH' on backdrop",
+  "Occasion: 1st birthday celebration",
+  "Style: playful and vibrant animal-themed decor"
+],
+"Pahel’s Fairyland pink butterfly balloon decor with fairy wings.jpg": [
+  "Balloons: pink, purple, brown",
+  "Decoration: pastel arch with floral and butterfly accents",
+  "Backdrop: flex with 'Pahel’s FAIRYLAND' text",
+  "Theme Props: fairy wings cutout, fairy figure",
+  "Name Display: 'Pahel’s FAIRYLAND' on arch",
+  "Occasion: birthday or fairy tale themed celebration",
+  "Style: whimsical and dreamy fairyland decor"
+],
+"pastel rainbow ONEderful 1st birthday balloon decor for Navya.jpg": [
+  "Balloons: pastel and metallic shades",
+  "Decoration: rainbow arches, floral arrangements, building blocks spelling 'ONE'",
+  "Backdrop: floral panels with 'isn't She ONEderful' text",
+  "Theme Props: illuminated number '1', large illuminated letters spelling 'NAVYA'",
+  "Foil / Lights: illuminated name and number props",
+  "Name Display: 'NAVYA' in illuminated letters",
+  "Occasion: 1st birthday celebration",
+  "Style: elegant and colorful pastel-themed decor"
+],
+"lavender butterfly baby shower balloon decor for Ria.jpg": [
+  "Balloons: white, lavender, purple, pink, metallic bronze",
+  "Decoration: balloon arch around lavender backdrop with silver butterfly accents",
+  "Backdrop: lavender panel with 'Ria's Baby Shower' in white script",
+  "Theme Props: silver butterfly decorations, floral accents",
+  "Props: metallic geometric stool, patterned tile floor",
+  "Name Display: 'Ria's Baby Shower' on backdrop",
+  "Occasion: baby shower celebration",
+  "Style: elegant and whimsical pastel-themed decor"
+],
+"baby birthday decor with palna themed decor.PNG": [
+  "Balloons: pastel shades (pink, blue, white, lavender)",
+  "Decoration: balloon arch or clusters surrounding cradle setup",
+  "Backdrop: soft-toned panel with baby-themed text or name",
+  "Theme Props: decorative cradle (palna), baby figurine or plush, floral accents",
+  "Foil / Lights: optional fairy lights or soft glow around cradle",
+  "Props: cradle centerpiece, baby-themed signage",
+  "Name Display: customizable based on baby’s name",
+  "Occasion: birthday celebration",
+  "Style: gentle and cozy cradle-themed decor",
+  "Note: This decor includes entry in palna (cradle) setup for b'day boy."
+],
+"Mundan party balloon decor with No Hair Don’t Care theme.PNG": [
+  "Balloons: pastel blue, pink, green, gold",
+  "Decoration: purple board backdrop with playful text and cartoon animal faces",
+  "Backdrop: 'NO HAIR DON'T CARE' central text with phrases like 'BALD FUN', 'MUNDAN PARTY', 'BEST DAY EVER'",
+  "Theme Props: cartoon animals (giraffe, zebra, lion, monkey), scissors and comb cutouts",
+  "Occasion: Mundan ceremony celebration",
+  "Style: fun and quirky hair-cutting themed decor"
+],
+"earthy green gold birthday balloon decor for Kushal.PNG": [
+  "Balloons: white, gold, bronze, olive green",
+  "Decoration: balloon arch with green leafy vines",
+  "Backdrop: brown textured panel with 'Happy Birthday Kushal' in white cursive font",
+  "Props: scattered balloons on the floor",
+  "Name Display: 'Kushal' on backdrop",
+  "Occasion: birthday celebration",
+  "Style: earthy and elegant nature-inspired decor"
+],
+"pink gold unicorn 15th birthday balloon decor.jpg": [
+  "Balloons: pink, white, gold",
+  "Decoration: balloon arch with artificial flowers and warm string lights",
+  "Backdrop: curtain with gold 'Happy Birthday' banner and gold foil number '15'",
+  "Foil / Lights: gold foil balloons, string lights",
+  "Occasion: 15th birthday celebration",
+  "Style: festive and whimsical unicorn-themed decor"
+],
+"Frozen theme pastel balloon wall birthday decor with Elsa cutouts.PNG": [
+  "Balloons: pastel purple, blue, white, metallic silver",
+  "Decoration: textured balloon wall with layered clusters and garlands",
+  "Backdrop: neon 'Happy Birthday' sign in cursive",
+  "Theme Props: cardboard cutouts of Elsa from Frozen",
+  "Foil / Lights: neon sign, metallic balloons",
+  "Props: indoor setup with whimsical Frozen theme",
+  "Occasion: birthday celebration",
+  "Style: magical and wintry Frozen-themed decor"
+],
+"bride to be balloon decor with champagne and ring props.PNG": [
+  "Balloons: gold, rose gold, white, peach, silver, transparent",
+  "Decoration: balloon arch and floor display with green leaf accents",
+  "Backdrop: plain white wall with rose gold 'BRIDE TO BE' letter balloons",
+  "Theme Props: champagne bottle, diamond ring, star, fish-shaped balloons",
+  "Occasion: bridal shower or bachelorette party",
+  "Style: glamorous and celebratory pre-wedding decor"
+],
+"purple butterfly balloon decor with heartfelt message banner.jpeg": [
+  "Balloons: pink, purple, metallic rose gold",
+  "Decoration: balloon arch with butterfly and floral accents",
+  "Backdrop: wooden wall with vertical purple banner featuring heartfelt message",
+  "Theme Props: butterfly decorations, floral clusters",
+  "Occasion: birthday or celebration of a loved one",
+  "Style: sentimental and elegant decor with personal message"
+],
+"red gold star balloon 1st birthday decor with unicorn cake.jpeg": [
+  "Balloons: red, white, gold, gold star-shaped",
+  "Decoration: balloon arch with gold stars and sheer white curtain backdrop",
+  "Backdrop: glowing neon 'Happy Birthday' sign in cursive",
+  "Foil / Lights: gold foil balloons, illuminated number '1', neon sign",
+  "Props: cylindrical pedestal for cake display",
+  "Occasion: 1st birthday celebration",
+  "Style: festive and magical unicorn-themed milestone decor"
+],
+"gold white silver balloon arch birthday decor with star columns.jpeg": [
+  "Balloons: gold, white, silver",
+  "Decoration: circular balloon arch with balloon columns topped by silver star-shaped balloons",
+  "Backdrop: white curtain with string lights and gold cursive 'Happy Birthday' text",
+  "Theme Props: floating balloons near ceiling",
+  "Foil / Lights: string lights, metallic balloons, silver star toppers",
+  "Occasion: birthday celebration",
+  "Style: elegant and festive metallic-themed decor"
+],
+"Minecraft theme 9th birthday balloon decor with character props.jpeg": [
+  "Balloons: white, green, gold, blue star-shaped",
+  "Decoration: circular balloon arch with Minecraft character head hanging at top center",
+  "Backdrop: white wall with neon 'Happy Birthday' sign",
+  "Theme Props: Minecraft character balloons, cylindrical stand with balloon flowers",
+  "Foil / Lights: neon sign, illuminated number '9'",
+  "Occasion: 9th birthday celebration",
+  
+],
+"Welcome Baby Yashshree pastel butterfly balloon decor with floral backdrop.jpeg": [
+  "Balloons: pastel purple, pink, silver, butterfly-shaped, silver spherical",
+  "Decoration: balloon arch around circular floral backdrop with butterfly accents",
+  "Backdrop: circular board with 'Welcome Baby Yashshree' text and floral design",
+  "Theme Props: balloon pillars topped with silver balloons, flower-shaped balloon arrangement",
+  "Name Display: 'Baby Yashshree' on backdrop",
+  "Occasion: baby welcome celebration",
+  "Style: soft and cheerful pastel-themed decor"
+],
+"Avyaan Turns 1 pastel rainbow balloon decor with cartoon characters.jpeg": [
+  "Balloons: pastel pink, yellow, blue, purple, teal, silver",
+  "Decoration: balloon arch around photo backdrop with rainbow and clouds",
+  "Backdrop: large photo of Avyaan with 'Avyaan Turns 1' text and cartoon characters",
+  "Theme Props: illuminated number '1', neon 'HAPPY Birthday' sign, animated character cutouts",
+  "Foil / Lights: neon sign, illuminated number, silver balloon accents",
+  "Name Display: 'Avyaan Turns 1' on backdrop",
+  "Occasion: 1st birthday celebration",
+  "Style: cheerful and colorful cartoon-themed decor"
+],
+"black gold 30th birthday balloon decor with marquee lights.jpeg": [
+  "Balloons: black, gold, silver, large yellow accent balloon",
+  "Decoration: circular balloon arrangement with layered clusters",
+  "Backdrop: plain wall with black and gold 'HAPPY BIRTHDAY' banner",
+  "Theme Props: illuminated marquee-style number '30'",
+  "Foil / Lights: marquee lights, metallic balloons",
+  "Occasion: 30th birthday celebration",
+  "Style: bold and elegant milestone-themed decor"
+],
+"blue silver balloon ring birthday decor with floating cards.jpeg": [
+  "Balloons: metallic blue, silver",
+  "Decoration: circular balloon ring with helium balloons floating above",
+  "Backdrop: white curtain with neon 'Happy Birthday' sign in cursive",
+  "Theme Props: playing cards and notes hanging from balloon strings",
+  "Foil / Lights: neon sign, metallic balloons",
+  "Occasion: birthday celebration",
+  
+],
+"pink unicorn crown balloon decor for 8th birthday with silver fringe backdrop.jpeg": [
+  "Balloons: red, pink, white, gold, purple",
+  "Decoration: balloon arch around silver fringe curtain backdrop",
+  "Backdrop: silver fringe curtain with pink 'HAPPY BIRTHDAY' banner",
+  "Theme Props: gold crown balloon, gold number '8', pink barbie, pink stars and hearts",
+  "Occasion: 8th birthday celebration",
+  "Style: colorful and whimsical unicorn-themed decor"
+],
+"jungle theme 4th birthday balloon decor with lion and animal prints.jpeg": [
+  "Balloons: gold, green, yellow, maroon, orange",
+  "Decoration: balloon arch around doorway with artificial green leaves",
+  "Backdrop: door with jungle-themed 'HAPPY BIRTHDAY' banner",
+  "Theme Props: gold crown balloon, gold number '4', printed lion and jungle animal balloons, star-shaped balloons",
+  "Occasion: 4th birthday celebration",
+  "Style: adventurous and colorful jungle-themed decor"
+],
+"Welcome Baby bedroom balloon decor with blue star and baby props.jpeg": [
+  "Balloons: white, light blue, gray, metallic blue star-shaped",
+  "Decoration: balloon arch over bed headboard with baby-themed balloons",
+  "Backdrop: bedroom wall with metallic blue 'WELCOME BABY' letter balloons",
+  "Theme Props: large baby-themed balloons on either side of arch",
+  
+  "Occasion: baby welcome celebration",
+  "Style: cozy and cheerful bedroom-based decor"
+],
+"Welcome Baby Girl balloon decor with moon, bottle, and baby face props.jpeg": [
+  "Balloons: pink, white, silver",
+  "Decoration: balloon arch and columns with themed foil balloons",
+  "Backdrop: wall with 'WELCOME BABY GIRL' balloon letters (pink for 'WELCOME BABY', silver for 'GIRL')",
+  "Theme Props: crescent moon balloon, baby bottle balloon, baby face balloon",
+  "Props: transparent boxes stacked vertically with 'B', 'A', 'B', 'Y' letters and balloons inside",
+  "Occasion: baby girl welcome celebration",
+  "Style: festive and charming pink-themed decor"
+],
+"colorful cartoon-themed 4th birthday balloon decor with streamers and table.jpg": [
+  "Balloons: purple, yellow, blue, green, pink, orange",
+  "Decoration: balloon clusters around blue streamer backdrop",
+  "Backdrop: yellow 'HAPPY BIRTHDAY' banner with black letters",
+  "Theme Props: cartoon character foil balloons, gold number '4' balloon",
+  "Foil / Lights: metallic foil balloons",
+  "Props: white marble-top table with pastel balloons around edge",
+  "Occasion: 4th birthday celebration",
+],
+"pastel baby shower balloon decor with fringe backdrop and themed props.jpg": [
+  "Balloons: pastel white, pink, blue, gold",
+  "Decoration: balloon arch around metallic fringe curtain backdrop",
+  "Backdrop: metallic fringe curtain with gold foil 'BABY SHOWER' balloon letters",
+  "Theme Props: baby bottle balloons ('It's a Girl', 'It's a Boy'), baby carriage balloons ('Baby Girl', 'Baby Boy'), foot-shaped balloons ('It's a Girl', 'It's a Boy')",
+  "Foil / Lights: metallic foil balloons",
+  "Occasion: baby shower celebration",
+
+],
+"blue gold butterfly 1st birthday balloon decor with photo string and teddy.jpeg": [
+  "Balloons: white, blue, silver, gold",
+  "Decoration: circular balloon arch with golden butterfly accents",
+  "Backdrop: neon 'Happy Birthday' sign with string of colorful cards or photos",
+  "Theme Props: illuminated number '1', teddy bear with red heart",
+  "Foil / Lights: neon sign, metallic balloons",
+  "Occasion: 1st birthday celebration",
+  
+],
+"Tiara's First Year balloon decor with photo collage board.jpeg": [
+  "Balloons: pink, purple, white, metallic gold",
+  "Decoration: balloon arch framing a large photo collage board",
+  "Backdrop: display board with 'Tiara's First Year' text and family photo collage",
+  "Theme Props: personalized photo memories",
+  
+  "Name Display: 'Tiara's First Year' on board",
+  "Occasion: 1st birthday celebration",
+  "Style: sentimental and personalized milestone-themed decor"
+],
+"Prarthana Turns 8 gymnastics-themed birthday decor with rainbow and star balloons.jpeg": [
+  "Balloons: purple, pink, white, gold",
+  "Decoration: balloon clusters and arch around illustrated gymnast backdrop",
+  "Backdrop: illustrated gymnasts on balance beam with 'Prarthana Turns 8' text",
+  "Theme Props: rainbow balloon stand, gold number '8' balloon, star-shaped balloons, 'Little Gymnast' sign",
+  "Name Display: 'Prarthana Turns 8' on backdrop",
+  "Occasion: 8th birthday celebration",
+  "Style: energetic and sporty gymnastics-themed decor"
+],
+"baby Mickey Mouse balloon decor with themed pedestals and blue arch.jpeg": [
+  "Balloons: blue, silver, white",
+  "Decoration: balloon arch around circular backdrop with baby Mickey Mouse illustration",
+  "Backdrop: circular board with Mickey Mouse head silhouettes and baby Mickey image",
+  "Theme Props: three light blue cylindrical pedestals (polka dots, cloud with Mickey, blue heart)",
+  "Occasion: birthday or baby celebration",
+  "Style: playful and character-themed Mickey Mouse decor"
+],
+"Mickey Mouse ear balloon arch birthday decor with character props and neon sign.jpeg": [
+  "Balloons: black (ear arch), red, yellow",
+  "Decoration: balloon arch shaped like Mickey Mouse ears",
+  "Backdrop: white vertical panel wall with neon 'Happy Birthday' sign",
+  "Theme Props: large Mickey Mouse and Minnie Mouse character balloons",
+  "Occasion: birthday celebration",
+  "Style: bold and cheerful Disney-themed decor"
+],
+"Happy 1st Birthday Elna balloon decor with floral accents and pink backdrop.jpeg": [
+  "Balloons: pastel pink, purple, metallic gold",
+  "Decoration: balloon arch with small white flower accents",
+  "Backdrop: pink board with glittery gold text 'Happy 1st Birthday Elna'",
+  "Name Display: 'Elna' on backdrop",
+  "Occasion: 1st birthday celebration",
+  "Style: elegant and feminine pastel-themed decor"
+],
+"Oh Baby pastel balloon decor with butterfly accents and draped fabric.jpeg": [
+  "Balloons: pastel pink, lavender, gold",
+  "Decoration: balloon arch on left side of circular white metal frame",
+  "Backdrop: circular frame with neon 'Oh Baby' sign and pink draped fabric",
+  "Theme Props: artificial pink flowers, small gold butterfly decorations",
+  "Foil / Lights: neon sign, metallic balloons",
+  "Occasion: baby shower or gender reveal",
+  "Style: soft and elegant pastel-themed decor"
+],
+"Cheers-themed gold white birthday balloon decor with cocktail glass prop.jpeg": [
+  "Balloons: gold, white, black with 'CHEERS' print",
+  "Decoration: balloon arrangement with cocktail glass balloon and small figure inside",
+  "Backdrop: wall with shiny gold 'happy birthday' banner",
+  "Theme Props: cocktail glass balloon, printed 'CHEERS' balloons",
+  "Occasion: birthday celebration",
+  "Style: festive and adult-themed Cheers decor"
+],
+"Ivaan is 4 Three Little Pigs-themed birthday decor with pig and leaf balloons.jpeg": [
+  "Balloons: pink, blue, yellow, brown, metallic, green leaf accents",
+  "Decoration: balloon arch around illustrated fairy tale backdrop",
+  "Backdrop: cartoon-style Three Little Pigs and wolf with 'Ivaan is 4' text",
+  "Theme Props: blue number '4' balloon, 'HAPPY BDAY' round balloon, pig-shaped balloon, star-shaped balloons",
+  "Name Display: 'Ivaan is 4' on backdrop",
+  "Occasion: 4th birthday celebration",
+],
+"Prarthana Turns 8 gymnastics-themed birthday decor with fairies and star balloons faridabad.jpeg": [
+  "Balloons: white, purple, pink, gold, red",
+  "Decoration: elaborate balloon arch around illustrated gymnast backdrop",
+  "Backdrop: circular board with gymnasts on balance beam and 'Prarthana Turns 8' text",
+  "Theme Props: large number '8' balloon, star-shaped balloons, fairy/princess character balloons",
+  "Foil / Lights: metallic foil balloons",
+  "Props: outdoor setup on artificial grass with trees and plants",
+  "Name Display: 'Prarthana Turns 8' on backdrop",
+  "Occasion: 8th birthday celebration",
+  "Style: vibrant and fantasy-infused gymnastics-themed decor"
+]
+,
+"Ivaan is 4 baby Mickey Mouse balloon decor with illuminated number and pedestal.jpeg": [
+  "Balloons: blue, silver, white",
+  "Decoration: balloon arch around circular backdrop with baby Mickey Mouse illustration",
+  "Backdrop: circular board with baby Mickey Mouse image",
+  "Theme Props: cylindrical pedestal with Mickey Mouse balloon figure, illuminated number '1'",
+  "Foil / Lights: metallic balloons, ceiling balloon clusters",
+  "Occasion: 1st birthday celebration",
+  "Style: cheerful and character-themed Mickey Mouse decor"
+],
+"Naming Ceremony balloon decor with baby props and red curtain backdrop.jpeg": [
+  "Balloons: white, blue, silver",
+  "Decoration: circular balloon arch with baby-themed cutouts and scattered floor balloons",
+  "Backdrop: red curtain with colorful 'NAMING CEREMONY' banner inside arch",
+  "Theme Props: baby bottle, baby carriage, pacifier, onesie, cartoon baby figures, golden baby doll",
+  "Occasion: baby naming ceremony",
+  "Style: joyful and culturally significant baby-themed decor"
+]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+};
+
+// 👉 Add more images anytime (SAFE)
+
+/* -------------------- MANUAL SELLING PRICES -------------------- */
+
+const prices = [
+  "₹5999",
+  "₹1599",
+  "₹1599",
+  "₹1799",
+  "₹1499",
+  "₹1599",
+  "₹6499",
+  "₹2199",
+  "₹2199",
+  "₹1299",
+  "₹2199",
+  "₹1499",
+  "₹1499",
+  "₹1399",
+  "₹1799",
+  "₹1699",
+  "₹4999",
+  "₹6499",
+  "₹5499",
+  "₹1999",
+  "₹5499",
+  "₹3499",
+  "₹4499",
+  "₹5499",
+  "₹3499",
+  "₹3499",
+  "₹4499",
+  "₹5599",
+  "₹5499",
+  "₹4499",
+  "₹4599",
+  "₹4999",
+  "₹5999",
+  "₹4499",
+  "₹5499",
+  "₹6499",
+  "₹6999",
+  "₹3199",
+  "₹4499",
+  "₹4999",
+  "₹2999",
+  "₹2599",
+  "₹4499",
+  "₹3999",
+  "₹3999",
+  "₹3999",
+  "₹4199",
+  "₹3599",
+  "₹4999",
+  "₹2999",
+  "₹6199",
+  "₹19999",
+  "₹16999",
+  "₹14999",
+  "₹2999",
+  "₹2999",
+  "₹4499",
+  "₹1499",
+  "₹6499",
+  "₹2199",
+  "₹5499",
+  "₹1999",
+  "₹1999",
+  "₹1799",
+  "₹2199",
+  "₹2499",
+  "₹1999",
+  "₹1199",
+  "₹1999",
+  "₹1599",
+  "₹1399",
+  "₹1499",
+  "₹9999",
+  "₹5999",
+  "₹6499",
+  "₹4299",
+  "₹11999",
+  "₹7499",
+  "₹2399",
+  "₹6999",
+  "₹4999",
+  "₹5199",
+  "₹18999",
+  "₹4999",
+  "₹7999",
+  "₹12999",
+  "₹11999",
+  "₹18999",
+  "₹3599",
+  "₹5999",
+  "₹4499",
+  "₹2999",
+  "₹10999",
+  "₹4499",
+  "₹9999",
+  "₹8999",
+  "₹3499",
+  "₹1599",
+  "₹2999",
+  "₹6999",
+  "₹4999",
+  "₹1999",
+  "₹1499",
+  "₹1799",
+  "₹7499",
+  "₹5199",
+  "₹2099",
+  "₹1599",
+  "₹2199",
+  "₹1899",
+  "₹3499",
+  "₹18999",
+  "₹2399",
+  "₹7999",
+  "₹3299",
+  "₹3599",
+  "₹5999",
+  "₹7999",
+  "₹4999",
+  "₹4299",
+  "₹5499",
+  "₹5499",
+  "₹1299",
+  "₹1399",
+  "₹1499",
+  "₹1699",
+  "₹3199",
+  "₹8499",
+  "₹5999",
+  "₹4999",
+  "₹6999",
+  "₹10499",
+  "₹2999",
+  
+  "₹16999",
+  "₹6999",
+  "₹22999",
+  "₹2799",
+  "₹2299",
+  "₹14599",
+  "₹6499",
+  "₹3299",
+  "₹12499",
+  "₹20499",
+  "₹6999",
+  "₹2799",
+  "₹3499",
+  "₹7499",
+  "₹1999",
+  "₹5999",
+  "₹4999",
+  "₹4499",
+  "₹5199",
+  "₹5099",
+  "₹7500",
+  "₹3699",
+  "₹4499",
+  "₹1799",
+  "₹2299",
+  "₹1799",
+  "₹2999",
+  "₹1999",
+  "₹2199",
+  "₹4999",
+  "₹1599",
+  "₹5499",
+  "₹5999",
+  "₹4999",
+  "₹5499",
+  "₹4999",
+  "₹4699",
+  "₹1699",
+  "₹4999",
+  "₹5499",
+  "₹3499"
+
+
+
+
+];
+
+/* -------------------- FINAL DECORATIONS DATA -------------------- */
+
+const decorations = images.map((img, index) => {
+  const title = generateTitle(img);
+  const sellingPrice = prices[index];
+  const numericPrice = sellingPrice ? parsePrice(sellingPrice) : null;
+
+  const itemsUsed = manualItemsUsed[img] || getItemsUsed(title);
+
+  if (!numericPrice) {
+    return {
+      id: index + 1,
+      image: img,
+      title,
+      description: `Premium ${title} ideal for birthdays, anniversaries, baby showers, and special celebrations.`,
+      price: "Price not set",
+      cutPrice: null,
+      discount: null,
+      itemsUsed,
+    };
+  }
+
+  const discountAmount = getDiscountAmount(numericPrice);
+
+  return {
+    id: index + 1,
+    image: img,
+    title,
+    description: `Premium ${title} ideal for birthdays, anniversaries, baby showers, and special celebrations.`,
+    price: sellingPrice,
+    cutPrice: formatPrice(numericPrice + discountAmount),
+    discount: `Save ₹${discountAmount}`,
+    itemsUsed,
+  };
+});
+
+export default decorations;
