@@ -8,6 +8,7 @@ import { useState, useEffect, useRef } from "react";
 export default function GalleryPage() {
   const [selectedImage, setSelectedImage] = useState(null);
   const touchStartX = useRef(0);
+const scrollYRef = useRef(0);
 
   /* =======================
      PRICE HELPER
@@ -23,17 +24,26 @@ export default function GalleryPage() {
   /* =======================
      BODY SCROLL LOCK
   ======================== */
-  useEffect(() => {
-    if (selectedImage) {
-      document.body.style.overflow = "hidden";
-      document.body.style.position = "fixed";
-      document.body.style.width = "100%";
-    } else {
-      document.body.style.overflow = "";
-      document.body.style.position = "";
-      document.body.style.width = "";
-    }
-  }, [selectedImage]);
+  /* =======================
+   BODY SCROLL LOCK (FIXED)
+======================= */
+useEffect(() => {
+  if (selectedImage) {
+    // save scroll position
+    scrollYRef.current = window.scrollY;
+
+    document.body.style.position = "fixed";
+    document.body.style.top = `-${scrollYRef.current}px`;
+    document.body.style.width = "100%";
+  } else {
+    // restore scroll position
+    document.body.style.position = "";
+    document.body.style.top = "";
+    document.body.style.width = "";
+    window.scrollTo(0, scrollYRef.current);
+  }
+}, [selectedImage]);
+
 /* =======================
      NEXT / PREV
   ======================== */
