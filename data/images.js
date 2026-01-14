@@ -173,7 +173,6 @@ const images = [
   "Ivaan is 4 Three Little Pigs-themed birthday decor with pig and leaf balloons.jpeg",
   "Ivaan is 4 baby Mickey Mouse balloon decor with illuminated number and pedestal.jpeg",
   "Naming Ceremony balloon decor with baby props and red curtain backdrop.jpeg",
-  
 ];
 
 export default images;

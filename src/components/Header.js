@@ -18,7 +18,7 @@ export default function Header() {
 
   return (
     <header className="bg-[#FEF9FF] shadow-sm sticky top-0 z-40">
-    <div className="max-w-6xl mx-auto flex items-center justify-between px-6 py-5 lg:py-6">
+    <div className="max-w-6xl mx-auto flex items-center justify-between px-6 py-4 lg:py-5">
 
       {/* LOGO */}
 <Link href="/" className="flex items-center gap-4 whitespace-nowrap">
@@ -44,7 +44,7 @@ export default function Header() {
 
 
         {/* DESKTOP NAV (ONLY ≥1024px) */}
-        <nav className="hidden lg:flex items-center space-x-2">
+        <nav className="hidden lg:flex items-center space-x-1">
           <Link href="/" className={navLinkClass("/")}>Home</Link>
           <Link href="/gallery" className={navLinkClass("/gallery")}>Gallery</Link>
           <Link href="/pricing" className={navLinkClass("/pricing")}>Pricing</Link>

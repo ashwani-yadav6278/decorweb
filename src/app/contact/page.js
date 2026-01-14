@@ -1,5 +1,4 @@
 "use client";
-
 export default function ContactForm() {
   return (
     <section className="bg-gradient-to-br from-pink-50 via-purple-50 to-yellow-50 py-20">

@@ -1595,30 +1595,6 @@ const manualItemsUsed = {
   "Style: joyful and culturally significant baby-themed decor"
 ]
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 };
 
 // 👉 Add more images anytime (SAFE)
@@ -1759,7 +1735,6 @@ const prices = [
   "₹6999",
   "₹10499",
   "₹2999",
-  
   "₹16999",
   "₹6999",
   "₹22999",
