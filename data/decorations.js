@@ -822,7 +822,7 @@ const manualItemsUsed = {
     "Occasion: wedding, engagement, or celebration",
     "Style: elegant and romantic natural-modern fusion decor",
   ],
-  "cocomelon theme 4th birthday balloon decor.jpg": [
+  "cocomelon_theme_4th_birthday_balloon_decor.jpg": [
     "Balloons: rainbow colors (red, orange, yellow, green, blue, purple)",
     "Decoration: balloon arch with CoComelon character cutouts",
     "Backdrop: printed display with 'CoComelon Aarna is 4' and cartoon characters",
@@ -863,7 +863,7 @@ const manualItemsUsed = {
     "Occasion: birthday pool party celebration",
     "Style: tropical and vibrant summer-themed decor",
   ],
-  "princess theme pastel 1st birthday balloon decor ring.jpg": [
+  "princess_theme_pastel_1st_birthday_balloon_decor_ring.jpg": [
     "Balloons: pastel pink, purple, blue, gold",
     "Decoration: circular balloon arch with string lights and princess cutouts",
     "Backdrop: green foliage with neon 'Happy Birthday' sign",
@@ -883,7 +883,7 @@ const manualItemsUsed = {
     "Occasion: birthday celebration",
     "Style: romantic and personalized bedroom decor",
   ],
-  "jungle theme 3rd birthday balloon decor for Mahi.jpg": [
+  "jungle_theme_3rd_birthday_balloon_decor_for_Mahi.jpg": [
     "Balloons: teal, white, gold, green",
     "Decoration: circular stage with balloon arch and jungle animal accents",
     "Backdrop: neon 'Happy Birthday' sign behind stage",
@@ -894,7 +894,7 @@ const manualItemsUsed = {
     "Occasion: birthday celebration",
     "Style: vibrant and playful jungle-themed decor",
   ],
-  "crescent moon welcome baby decor ring.jpg": [
+  "crescent_moon_welcome_baby_decor_ring.jpg": [
     "Balloons: blue, white, gold",
     "Decoration: balloon clusters with crescent moon and cloud shapes",
     "Backdrop: printed panel with 'A new light in our lives Ayaan' text",
@@ -903,7 +903,7 @@ const manualItemsUsed = {
     "Occasion: baby shower or newborn welcome",
     "Style: dreamy and celestial-themed decor",
   ],
-  "pastel moon star 1st birthday balloon decor ring faridabad.jpg": [
+  "pastel_moon_star_1st_birthday_balloon_decor_ring_faridabad.jpg": [
     "Balloons: pastel pink, purple, blue, yellow, white",
     "Decoration: balloon arch with metallic star and crescent moon balloons",
     "Backdrop: neon 'Happy Birthday' sign framed by balloon arch",
@@ -912,7 +912,7 @@ const manualItemsUsed = {
     "Occasion: 1st birthday celebration",
     "Style: dreamy and celestial pastel decor",
   ],
-  "frozen elsa theme birthday balloon decor.jpg": [
+  "frozen_elsa_theme_birthday_balloon_decor.jpg": [
     "Balloons: white, silver, blue, purple",
     "Decoration: circular balloon arch with star and heart-shaped balloons",
     "Backdrop: sheer white curtain with neon 'Happy Birthday' sign and balloon icon",
@@ -921,7 +921,7 @@ const manualItemsUsed = {
     "Occasion: birthday celebration",
     "Style: magical and character-themed Frozen decor",
   ],
-  "silver glam 25th birthday balloon decor.jpg": [
+  "silver_glam_25th_birthday_balloon_decor.jpg": [
     "Balloons: silver, white",
     "Decoration: balloon clusters with disco balls and star-shaped accents",
     "Backdrop: shimmering silver sequin wall with neon 'Happy Birthday' sign",
@@ -930,7 +930,7 @@ const manualItemsUsed = {
     "Occasion: 25th birthday celebration",
     "Style: elegant and glamorous milestone decor",
   ],
-  "pool party back to school balloon decor.jpg": [
+  "pool_party_back_to_school_balloon_decor.jpg": [
     "Balloons: turquoise blue, yellow, white, orange, pink, purple",
     "Decoration: balloon clusters around backdrop",
     "Backdrop: custom pool party theme panel",
@@ -939,7 +939,7 @@ const manualItemsUsed = {
     "Occasion: pool party / back to school celebration",
     "Style: colorful outdoor summer theme decor",
   ],
-  "burgundy gold birthday balloon decor.jpg": [
+  "burgundy_gold_birthday_balloon_decor.jpg": [
     "Balloons: burgundy maroon, metallic gold",
     "Decoration: balloon clusters",
     "Backdrop: gold sequin shimmer panel",
@@ -948,7 +948,7 @@ const manualItemsUsed = {
     "Accessories: artificial gold leaf fans",
     "Style: luxury minimal birthday theme",
   ],
-  "unicorn theme birthday balloon decor.jpg": [
+  "unicorn_theme_birthday_balloon_decor.jpg": [
     "Balloons: pastel pink, lavender, purple, baby blue",
     "Decoration: circular  balloon ring arch",
     "Theme Props: unicorn face & unicorn foil balloons",
@@ -957,7 +957,7 @@ const manualItemsUsed = {
     "Neon Sign: Happy Birthday LED light",
     "Style: colorful unicorn kids birthday theme",
   ],
-  "rose gold 25th birthday balloon decor.jpg": [
+  "rose_gold_25th_birthday_balloon_decor_arch.jpg": [
     "Balloons: rose gold, blush pink, metallic copper",
     "Decoration: organic balloon arch",
     "Backdrop: rose gold sequin shimmer panel",
@@ -966,7 +966,7 @@ const manualItemsUsed = {
     "Props: gold cylindrical cake pedestal",
     "Style: luxury rooftop birthday theme",
   ],
-  "silver_black_12th_birthday_balloon_decor.jpg": [
+  "silver_black_12th_birthday_balloon_decor_shimmerwalll.jpg": [
     "Balloons: silver chrome, black, metallic grey",
     "Decoration: balloon garland with disco balls",
     "Backdrop: silver sequin shimmer wall",
@@ -975,7 +975,7 @@ const manualItemsUsed = {
     "Props: black cylindrical cake pedestal",
     "Style: modern luxury birthday theme",
   ],
-  "romantic_bedroom_23rd_birthday_balloon_surprise.jpg": [
+  "romantic_bedroom_23rd_birthday_balloon_surprise_room_decor.jpg": [
     "Balloons: peach, white, transparent helium balloons on ceiling",
     "Decoration: ceiling balloon fill with ribbon drops",
     "Bed Decor: white net canopy with warm fairy lights",
@@ -998,7 +998,7 @@ const manualItemsUsed = {
     "Arch Style: balloon arch with side pillars",
     "Occasion: 5th birthday celebration",
   ],
-  "pastel_unicorn_theme_birthday_balloon_backdrop.jpg": [
+  "pastel unicorn theme birthday balloon backdrop arch decor.jpg": [
     "Balloons: pastel balloons in pink, lavender, mint, yellow and peach shades",
     "Theme: unicorn themed kids birthday decoration",
     "Backdrop: warm white curtain with fairy lights",
@@ -1290,7 +1290,7 @@ const manualItemsUsed = {
     "Occasion: 1st birthday celebration",
     "Style: elegant and colorful pastel-themed decor",
   ],
-  "lavender butterfly baby shower balloon decor for Ria.jpg": [
+  "lavender_butterfly_baby_shower_balloon_decor_for_Ria.jpg": [
     "Balloons: white, lavender, purple, pink, metallic bronze",
     "Decoration: balloon arch around lavender backdrop with silver butterfly accents",
     "Backdrop: lavender panel with 'Ria's Baby Shower' in white script",

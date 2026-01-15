@@ -10,13 +10,10 @@ import Image from "next/image";
 export default function Hero() {
   const images = [
     "/decorations/baby_shower_balloon_birthday_decoration.jpg",
-    
     "/decorations/balloon birthday decoration (44).PNG",
     "/decorations/anniversary_25th_ring_balloon_decoration.jpg",
     "/decorations/arch_girl_balloon_birthday_decoration7.jpg",
-
     "/decorations/balloon birthday decoration (2).jpg",
-
     "/decorations/balloon birthday decoration (20).PNG",
     "/decorations/ring_balloon_birtday_decoration.jpg",
     "/decorations/balloon birthday decoration (105).jpg",
