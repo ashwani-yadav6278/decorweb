@@ -267,7 +267,7 @@ const manualItemsUsed = {
     "Decoration: Circular balloon arch with attached themed balloons",
     "Props: Balloon sculptures shaped like babies on either side of the arch",
   ],
-  "balloon birthday backdrop decoration (57).PNG": [],
+
   "Arch_ballon_birthday_decoration.jpg": [
     "Balloons: Pink, white, black balloons; silver foil letter and number balloons",
     'Backdrop: Shiny pink fringe curtain with silver foil balloons spelling "6 ANAYA"',
@@ -1753,7 +1753,7 @@ const manualItemsUsed = {
       "Occasion: 40th birthday celebration",
       "Style: bold and glamorous black-gold milestone decor",
     ],
-  "welcome baby backdrop decor with a small ring.Jpeg": [
+  "welcome baby backdrop decor with a small ring.jpeg": [
     "Balloons: white cloud-shaped, various shades of blue, metallic star-shaped in gold, silver, light blue",
     "Decoration: circular balloon frame with baby balloon figure and embedded string lights",
     "Backdrop: light blue sheer curtains with glowing string lights",
@@ -1775,7 +1775,7 @@ const manualItemsUsed = {
       "Occasion: Lohri celebration",
       "Style: cultural and festive Punjabi-themed decor",
     ],
-  "Soon to be Mrs or bride to be pink balloon decor with outdoor garden setup and helium accents.Jpeg":
+  "Soon to be Mrs or bride to be pink balloon decor with outdoor garden setup and helium accents.jpeg":
     [
       "Balloons: pink, white, purple, helium-filled pink balloons",
       "Decoration: balloon arch around pastel pink backdrop",
@@ -1785,7 +1785,7 @@ const manualItemsUsed = {
       "Occasion: bridal shower or engagement celebration",
       "Style: romantic and pastel outdoor decor",
     ],
-  "Happy Birthday black-gold balloon decor with flamingo and rose petal heart.Jpeg":
+  "Happy Birthday black-gold balloon decor with flamingo and rose petal heart.jpeg":
     [
       "Balloons: black, gold, silver, large silver star-shaped",
       "Decoration: silver foil 'HAPPY BIRTHDAY' balloons and black-gold banner flags with fairy lights",
@@ -1796,7 +1796,7 @@ const manualItemsUsed = {
       "Occasion: birthday celebration",
       "Style: romantic and festive black-gold themed decor",
     ],
-  "Lohri celebration balloon decor with Shivaay name and Punjabi cutouts.Jpeg":
+  "Lohri celebration balloon decor with Shivaay name and Punjabi cutouts.jpeg":
     [
       "Balloons: colorful mix including yellow, pink, orange, blue, with floor balloons and ceiling hangings",
       "Decoration: vibrant backdrop with marigold garlands and decorative umbrellas",
@@ -1806,7 +1806,7 @@ const manualItemsUsed = {
       "Occasion: Lohri celebration",
       "Style: cultural and vibrant Punjabi-themed decor",
     ],
-  "Happy Birthday Aleeza balloon decor with disco balls and metallic 18.Jpeg": [
+  "Happy Birthday Aleeza balloon decor with disco balls and metallic 18.jpeg": [
     "Balloons: black, white, beige, metallic blue number '18'",
     "Decoration: balloon arch around white backdrop with disco balls and small round table",
     "Backdrop: creamy color arch board with 'Happy Birthday Aleeza' text",
@@ -1882,6 +1882,7 @@ const manualItemsUsed = {
       "Occasion: 1st birthday celebration",
       "Style: vibrant and pastel milestone-themed decor",
     ],
+
 };
 
 // 👉 Add more images anytime (SAFE)
@@ -2012,7 +2013,7 @@ const prices = [
   "₹10999",
   "₹4499",
   "₹9999",
-  "₹8999",
+  "₹4999",
   "₹3499",
   "₹1599",
   "₹2999",
@@ -2024,14 +2025,14 @@ const prices = [
   "₹7499",
   "₹5199",
   "₹2099",
-  "₹1599",
-  "₹2199",
+  "₹4999",
+  "₹3599",
   "₹1899",
   "₹3499",
   "₹18999",
   "₹2399",
   "₹7999",
-  "₹3299",
+  "₹6599",
   "₹3599",
   "₹5999",
   "₹7999",
