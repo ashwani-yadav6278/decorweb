@@ -101,7 +101,7 @@ const images = [
   "white gold anniversary balloon decor.jpg",
   "better together pampas balloon arch decor.jpg",
   "cocomelon theme 4th birthday balloon decor.jpg",
-  "mickey mouse theme birthday balloon decor ring.jpg",
+  "mickey_mouse_theme_birthday_balloon_decor_ring_ear.jpg",
   "rainbow pastel 1st birthday balloon decor.jpg",
   "pool party theme 3rd birthday balloon decor for.jpg",
   "princess theme pastel 1st birthday balloon decor ring.jpg",

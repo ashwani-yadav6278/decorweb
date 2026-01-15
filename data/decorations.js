@@ -833,7 +833,7 @@ const manualItemsUsed = {
     "Occasion: birthday celebration",
     "Style: vibrant and playful cartoon-themed decor",
   ],
-  "mickey mouse theme birthday balloon decor ring.jpg": [
+  "mickey_mouse_theme_birthday_balloon_decor_ring_ear.jpg": [
     "Balloons: red, black, white",
     "Decoration: balloon arch with Mickey Mouse balloon sculptures",
     "Backdrop: wall setup with 'Happy Birthday' neon sign",
@@ -2017,7 +2017,7 @@ const prices = [
   "₹3499",
   "₹1599",
   "₹2999",
-  "₹6999",
+  "₹2999",
   "₹4999",
   "₹1999",
   "₹1499",
