@@ -77,14 +77,14 @@ export default function AboutWhyCTA() {
 
           <div className="flex flex-col sm:flex-row justify-center gap-6">
             <Link
-              href="https://wa.me/91XXXXXXXXXX"
+              href="https://wa.me/+919582060618"
               className="bg-white text-pink-500 font-semibold px-8 py-4 rounded-full hover:bg-gray-100 transition"
             >
               Book on WhatsApp
             </Link>
 
             <Link
-              href="tel:+91XXXXXXXXXX"
+              href="tel:+919582060618"
               className="border-2 border-white font-semibold px-8 py-4 rounded-full hover:bg-white hover:text-pink-500 transition"
             >
               Call Now
