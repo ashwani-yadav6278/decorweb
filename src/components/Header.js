@@ -22,17 +22,10 @@ export default function Header() {
 
       {/* LOGO */}
 <Link href="/" className="flex items-center gap-4 whitespace-nowrap">
-  <Image
-    src="/decorLogo.png"
-    alt="Balloonzaa Decoration Logo"
-    width={260}
-    height={260}
-    priority
-    className="w-20 h-20 sm:w-24 sm:h-24 lg:w-28 lg:h-28 object-contain"
-  />
+ 
 
   <div className="leading-tight">
-    <h1 className="text-2xl lg:text-3xl font-extrabold text-[#6D5DF6]">
+    <h1 className="text-2xl lg:text-3xl font-extrabold italic text-[#6D5DF6] ">
       Balloonzaa
     </h1>
     <p className="text-sm lg:text-base text-gray-500">
