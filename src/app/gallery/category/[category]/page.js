@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import decorations from "../../../../data/decorations";
+import decorations from "../../../../../data/decorations";
 import { getCategory } from "@/lib/getCategory";
 
 export async function generateMetadata({ params }) {
