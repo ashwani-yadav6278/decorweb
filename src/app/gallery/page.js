@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import FloatingButtons from "@/components/CallButton";
-import decorations from "@/data/decorations.json";
+import decorations from "../../../data/decorations";
 import { getCategory } from "@/lib/getCategory";
 
 export default function GalleryPage() {
