@@ -55,6 +55,7 @@ export default function RootLayout({ children }) {
           src="https://www.googletagmanager.com/gtag/js?id=G-MXL4588KCX"
           strategy="afterInteractive"
         />
+        <script src="https://analytics.ahrefs.com/analytics.js" data-key="19rvJxeVOSR4aIdmr5QUmA" async></script>
         <Script id="google-analytics" strategy="afterInteractive">
           {`
       window.dataLayer = window.dataLayer || [];

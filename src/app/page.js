@@ -5,6 +5,7 @@ import GoogleReviews from "@/components/GoogleReviews";
 export default function Home() {
   return (
     <main>
+      
       <Hero />
 
       <GoogleReviews />

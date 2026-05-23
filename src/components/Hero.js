@@ -7,6 +7,7 @@ import "swiper/css/pagination";
 import Link from "next/link";
 import Image from "next/image";
 
+
 export default function Hero() {
   const images = [
     "/decorations/baby_shower_balloon_birthday_decoration.jpg",
