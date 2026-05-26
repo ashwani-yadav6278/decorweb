@@ -12,10 +12,6 @@ export const metadata = {
 
   metadataBase: new URL("https://www.balloonzaa.in"),
 
-  alternates: {
-    canonical: "https://www.balloonzaa.in/",
-  },
-
   openGraph: {
     title: "Balloon Decoration in Faridabad | Balloonzaa",
 
@@ -32,7 +28,7 @@ export const metadata = {
 
     images: [
       {
-        url: "/og-image.jpg",
+        url: "/og-image.png",
         width: 1200,
         height: 630,
         alt: "Balloonzaa Balloon Decoration",
@@ -48,7 +44,7 @@ export const metadata = {
     description:
       "Affordable balloon decoration service in Faridabad with same day home setup.",
 
-    images: ["/og-image.jpg"],
+    images: ["/og-image.png"],
 
     creator: "@balloonzaa",
   },
