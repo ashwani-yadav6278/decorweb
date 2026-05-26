@@ -1,9 +1,9 @@
-import { galleryData } from "@/data/galleryData";
+import decorations from "@/data/decorations";
 
 export default function sitemap() {
   const baseUrl = "https://www.balloonzaa.in";
 
-  const galleryUrls = galleryData.map((item) => ({
+  const galleryUrls = decorations.map((item) => ({
     url: `${baseUrl}/gallery/${item.slug}`,
     lastModified: new Date(),
     priority: 0.64,
