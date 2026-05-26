@@ -1,4 +1,4 @@
-import decorations from "@/data/decorations";
+import decorations from "../../data/decorations";
 
 export default function sitemap() {
   const baseUrl = "https://www.balloonzaa.in";
