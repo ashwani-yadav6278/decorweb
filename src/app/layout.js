@@ -3,84 +3,125 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import CallButton from "@/components/CallButton";
 import "./globals.css";
+
 export const metadata = {
-  title:
-    "Balloon Decoration in Faridabad | Birthday & Party Decor | Balloonzaa",
+  title: "Birthday Balloon Decoration in Faridabad | Balloonzaa",
 
   description:
-    "Book balloon decoration in Faridabad for birthday, anniversary, baby shower & events. Same-day setup, affordable price. Call now!",
+    "Book balloon decoration in Faridabad for birthday, anniversary, baby shower & events. Same-day setup, affordable price.",
 
-  keywords: [
-    "balloon decoration in Faridabad",
-    "best birthday decoration Faridabad",
-    "best anniversary decoration",
-    "party decorator near me",
-  ],
-
-  metadataBase: new URL("https://yourdomain.com"),
+  metadataBase: new URL("https://www.balloonzaa.in"),
 
   alternates: {
-    canonical: "https://yourdomain.com/",
+    canonical: "https://www.balloonzaa.in/",
   },
 
   openGraph: {
     title: "Balloon Decoration in Faridabad | Balloonzaa",
+
     description:
-      "Affordable balloon decoration service in Faridabad with same day  home setup.",
-    url: "https://yourdomain.com/",
+      "Affordable balloon decoration service in Faridabad with same day home setup.",
+
+    url: "https://www.balloonzaa.in/",
+
     siteName: "Balloonzaa",
+
+    locale: "en_IN",
+
+    type: "website",
+
     images: [
       {
-        url: "https://yourdomain.com/og-image.jpg",
-        width: 800,
-        height: 600,
+        url: "/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Balloonzaa Balloon Decoration",
       },
     ],
-    locale: "en_IN",
-    type: "website",
   },
 
-  robots: {
-    index: true,
-    follow: true,
+  twitter: {
+    card: "summary_large_image",
+
+    title: "Balloon Decoration in Faridabad | Balloonzaa",
+
+    description:
+      "Affordable balloon decoration service in Faridabad with same day home setup.",
+
+    images: ["/og-image.jpg"],
+
+    creator: "@balloonzaa",
   },
 };
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
-        <meta name="google-site-verification" content="XOaShhhNu3kL9St8Lfbx9JQUYsW7hR1niPwrAFYBIAA" />
+        {/* Google Search Console Verification */}
+        <meta
+          name="google-site-verification"
+          content="XOaShhhNu3kL9St8Lfbx9JQUYsW7hR1niPwrAFYBIAA"
+        />
+
+        {/* Google Analytics */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-MXL4588KCX"
           strategy="afterInteractive"
         />
-        <script src="https://analytics.ahrefs.com/analytics.js" data-key="19rvJxeVOSR4aIdmr5QUmA" async></script>
+
         <Script id="google-analytics" strategy="afterInteractive">
           {`
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      window.gtag = gtag;
-      gtag('js', new Date());
-      gtag('config', 'G-MXL4588KCX');
-    `}
-        </Script>
-      </head>
-      <body>
-        <Header />
-        {children}
+            window.dataLayer = window.dataLayer || [];
 
-        <CallButton />
-        <Footer />
+            function gtag(){
+              dataLayer.push(arguments);
+            }
+
+            window.gtag = gtag;
+
+            gtag('js', new Date());
+
+            gtag('config', 'G-MXL4588KCX');
+          `}
+        </Script>
+
+        {/* Ahrefs Analytics */}
+        <Script
+          src="https://analytics.ahrefs.com/analytics.js"
+          data-key="19rvJxeVOSR4aIdmr5QUmA"
+          strategy="afterInteractive"
+        />
+      </head>
+
+      <body>
+        
+          <Header />
+
+          {children}
+
+          <CallButton />
+
+          <Footer />
+        
+        {/* Local Business Schema */}
         <script
+          suppressHydrationWarning
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "LocalBusiness",
               name: "Balloonzaa",
-              areaServed: "Faridabad",
+              url: "https://www.balloonzaa.in",
               telephone: "+919582060618",
+              areaServed: "Faridabad",
+              address: {
+                "@type": "PostalAddress",
+                addressLocality: "Faridabad",
+                addressRegion: "Haryana",
+                addressCountry: "IN",
+              },
             }),
           }}
         />

@@ -95,7 +95,7 @@ const reviews = [
                   alt="Balloon Decoration"
                   width={600}
                   height={550}
-                  className="object-cover w-full h-[520px]"
+                  className="object-cover w-full h-130"
                 />
               </SwiperSlide>
             ))}
@@ -123,7 +123,7 @@ const reviews = [
           <p className="text-gray-700 mb-4">
             “{review.text}”
           </p>
-          <h4 className="font-semibold">{review.name}</h4>
+          <p className="font-semibold">{review.name}</p>
           <p className="text-sm text-gray-500">{review.area}</p>
         </div>
       ))}

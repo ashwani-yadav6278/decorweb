@@ -1233,7 +1233,7 @@ const manualItemsUsed = {
     "Occasion: birthday celebration for mother",
     "Style: vibrant and heartfelt family-themed decor",
   ],
-  "rose gold white silver fifteenth birthday balloon decor with party iconss.jpg": [
+  "rose gold white silver fifteenth birthday balloon decor with party icons.jpg": [
     "Balloons: rose gold, white, silver",
     "Decoration: balloon arrangement with star, party hat, and confetti graphic balloons",
     "Backdrop: wall beside window with rose gold foil 'happy birthday' balloons",

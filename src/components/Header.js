@@ -25,9 +25,9 @@ export default function Header() {
  
 
   <div className="leading-tight">
-    <h1 className="text-2xl lg:text-3xl font-extrabold italic text-[#6D5DF6] ">
+    <p className="text-2xl lg:text-3xl font-extrabold italic text-[#6D5DF6] ">
       Balloonzaa
-    </h1>
+    </p>
     <p className="text-sm lg:text-base text-gray-500">
       Balloon & Party Decor
     </p>

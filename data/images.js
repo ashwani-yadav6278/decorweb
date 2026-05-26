@@ -152,7 +152,7 @@ const images = [
   "jungle animal first birthday standy balloon decor with monkey and lion.jpg",
   "blue silver moon star second birthday balloon decor.jpg",
   "pink purple birthday balloon decor for Mummy.jpg",
-  "rose gold white silver fifteenth birthday balloon decor with party iconss.jpg",
+  "rose gold white silver fifteenth birthday balloon decor with party icons.jpg",
   "rainbow gradient birthday balloon arch with black banner.jpg",
   "Happy Anniversary balloon decor with illuminated number one and string lights.jpg",
   "cricket theme tenth birthday balloon decor with cartoon batsman.jpg",
