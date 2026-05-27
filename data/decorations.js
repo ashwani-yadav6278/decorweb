@@ -191,7 +191,7 @@ const manualItemsUsed = {
     "Artificial green leafs",
     "age number foil big size( 32 inch)",
   ],
-  "baby shower ballon decor.png": [
+  "baby shower ballon decor with teddy.png": [
     "Balloons: sage green, white, metallic gold, transparent confetti balloons",
     "Backdrop: cream arch panels",
     "Decoration: organic balloon garland",
@@ -205,7 +205,7 @@ const manualItemsUsed = {
     "Decoration: balloon clusters with silver butterfly accents",
     "Props: modern metallic geometric stand",
   ],
-  "baby shower balloon decoration.png": [
+  "baby shower balloon decoration with net curtains.png": [
     "Balloons: Blue, pink, silver star-shaped, and standard latex balloons",
     "Backdrop: Sheer fabric curtain with string lights",
     "Decoration: Balloon clusters and floral arrangements forming a top garland",
@@ -248,12 +248,15 @@ const manualItemsUsed = {
     "Props: Foil balloons shaped like baby bottles, baby carriages, and baby feet",
     'Accessories: Foil balloons with texts like "Baby Boy", "Baby Girl", "It\'s a Girl", "It\'s a Boy"',
   ],
-  "baby_shower_ring_balloon_decoration.jpg": [
-    "Balloons: Pink, white, orange, and metallic balloons; themed foil balloons",
-    'Backdrop: Sheer curtain over doorway with "Happy Birthday" balloon',
-    "Decoration: Balloon arch above doorway and balloon columns on each side",
-    "Props: Cartoon character foil balloon, pink star-shaped wall balloons",
-  ],
+  "oh baby ring balloon decoration sage green gold.jpg": [
+  "Balloons: Sage green, white, and metallic gold balloons arranged in a circular ring arch",
+  'Backdrop: Large white circular ring frame with illuminated "Oh Baby" neon sign',
+  "Decoration: Organic balloon clusters with mixed balloon sizes around the ring",
+  "Props: Tropical green leaves placed between balloon arrangements",
+  "Accessories: Metallic chrome gold balloons for luxury finish",
+  "Theme: Elegant baby shower setup with pastel and metallic tones",
+  "Floor decor with extra balloon clusters at the base of the ring",
+],
   "backdrop ring balloon birthday decoration shimmer wall.jpg": [
     "Balloons: Black, gold, and metallic balloons arranged in arches and clusters",
     'Backdrop: Gold sequin curtain with illuminated "Happy Birthday" sign',
@@ -289,11 +292,12 @@ const manualItemsUsed = {
     "Decoration: Balloon arch around doorway and clusters on the side",
     "Props: Framed photograph, wall-mounted light fixture",
   ],
-  "balloon birthday decoration.png": [
-    'Balloons: Pink, rose gold, purple balloons; silver foil number balloons "11"',
-    'Backdrop: String light curtain with "HAPPY BIRTHDAY" banner',
-    "Decoration: Balloon arch and columns with butterfly cutouts",
-    "Props: Gold heart-shaped foil balloon, butterfly wall accents",
+  "chrome silver and blue balloon birthday decor.jpg": [
+    'Balloons: Silver and  Blue chrome balloons',
+    'blue foil number balloons "25"',
+    'Backdrop:silver curtain with "HAPPY BIRTHDAY" banner',
+    "Decoration: Balloon arch and and 25 number on balloon stand",
+    
   ],
   "welcome_balloon_decoration.jpg": [
     "Balloons: Pink, white, gold, maroon balloons; iridescent butterfly foil balloon",
@@ -306,7 +310,7 @@ const manualItemsUsed = {
     "Decoration: Balloon arch surrounding the backdrop with pampas grass accents",
     "Props: Transparent BABY letter boxes filled with balloons",
   ],
-  "welcome_baby_girlballoon_decoration.jpg": [
+  "welcome_baby_girl balloon_decoration.jpg": [
     "Balloons: Pink and white balloons arranged in ceiling clusters and wall accents",
     'Backdrop: Wall with metallic letter balloons spelling "WELCOME SHAKTI"',
     "Decoration: Balloon clusters throughout the room and floral rangoli on the floor",
@@ -390,7 +394,7 @@ const manualItemsUsed = {
     "Neon Sign: Happy Anniversary (red neon)",
     "Theme Elements: elegant anniversary celebration",
   ],
-  "1st birthday pastel balloon decor ring.jpg": [
+  "first birthday pastel balloon decor ring.jpg": [
     "Balloons: pastel pink, lavender, white, metallic silver",
     "Foil Balloons: silver accent balloons",
     "Decoration: circular balloon ring arch",
@@ -400,7 +404,7 @@ const manualItemsUsed = {
     "Props: marquee number 1 light",
     "Accessories: pastel balloon flower clusters",
   ],
-  "18th birthday blue silver balloon decor.jpg": [
+  "eighteenth birthday  blue silver balloon decor ring.jpg": [
     "Balloons: metallic royal blue, silver, chrome silver",
     "Decoration: circular organic balloon arch",
     "Backdrop: silver fringe curtain",
@@ -721,7 +725,7 @@ const manualItemsUsed = {
     "Occasion: birthday car and racing theme",
     "Style: energetic and playful racing decor",
   ],
-  "Car Boot birthday balloon decor.jpg": [
+  "car_boot_birthday_balloon_decor.jpg": [
     "Balloons: red, white, pink, metallic purple",
     "Decoration: balloon-filled Car Trunk with spiral ribbons",
     "Backdrop: hanging 'Happy Birthday' banner with cakes and party hats",
@@ -732,7 +736,7 @@ const manualItemsUsed = {
     "Occasion: birthday celebration",
     "Style: creative and festive Car Trunk or boot decor",
   ],
-  "Car Trunk birthday balloon decor.jpg": [
+  "car_trunk_birthday_balloon_ decor.jpg": [
     "Balloons: metallic blue, silver, white, gold",
     "Decoration: balloon-filled Car Trunk with spiral ribbons",
     "Backdrop: glittery 'Happy Birthday' banner",
@@ -1315,7 +1319,7 @@ const manualItemsUsed = {
     "Occasion: baby shower celebration",
     "Style: elegant and whimsical pastel-themed decor",
   ],
-  "baby birthday decor with palna themed decor.png": [
+  "happy birthday decor  on first birthday.png": [
     "Balloons: pastel shades (pink, blue, white, lavender)",
     "Decoration: balloon arch or clusters surrounding cradle setup",
     "Backdrop: soft-toned panel with baby-themed text or name",
@@ -1327,7 +1331,7 @@ const manualItemsUsed = {
     "Style: gentle and cozy cradle-themed decor",
     "Note: This decor includes entry in palna (cradle) setup for b'day boy.",
   ],
-  "Mundan party balloon decor with No Hair Don’t Care theme.png": [
+  "Mundan party balloon decor with No Hair Don not Care theme.png": [
     "Balloons: pastel blue, pink, green, gold",
     "Decoration: purple board backdrop with playful text and cartoon animal faces",
     "Backdrop: 'NO HAIR DON'T CARE' central text with phrases like 'BALD FUN', 'MUNDAN PARTY', 'BEST DAY EVER'",
@@ -1335,7 +1339,7 @@ const manualItemsUsed = {
     "Occasion: Mundan ceremony celebration",
     "Style: fun and quirky hair-cutting themed decor",
   ],
-  "earthy green gold birthday balloon decor for Kushal.png": [
+  "earthy green gold birthday balloon decor.png": [
     "Balloons: white, gold, bronze, olive green",
     "Decoration: balloon arch with green leafy vines",
     "Backdrop: brown textured panel with 'Happy Birthday Kushal' in white cursive font",
@@ -1352,7 +1356,7 @@ const manualItemsUsed = {
     "Occasion: 15th birthday celebration",
     "Style: festive and whimsical unicorn-themed decor",
   ],
-  "Frozen theme pastel balloon wall birthday decor with Elsa cutouts.png": [
+  " frozen theme pastel balloon wall birthday decor with Elsa cutouts.png": [
     "Balloons: pastel purple, blue, white, metallic silver",
     "Decoration: textured balloon wall with layered clusters and garlands",
     "Backdrop: neon 'Happy Birthday' sign in cursive",
@@ -1362,7 +1366,7 @@ const manualItemsUsed = {
     "Occasion: birthday celebration",
     "Style: magical and wintry Frozen-themed decor",
   ],
-  "bride to be balloon decor with champagne and ring props.png": [
+  "bride to be balloon decor with champagne and ring prop.png": [
     "Balloons: gold, rose gold, white, peach, silver, transparent",
     "Decoration: balloon arch and floor display with green leaf accents",
     "Backdrop: plain white wall with rose gold 'BRIDE TO BE' letter balloons",
@@ -1965,7 +1969,7 @@ const prices = [
   "₹6499",
   "₹2199",
   "₹2199",
-  "₹1299",
+  "₹5499",
   "₹2199",
   "₹1499",
   "₹1499",
