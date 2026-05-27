@@ -191,7 +191,7 @@ const manualItemsUsed = {
     "Artificial green leafs",
     "age number foil big size( 32 inch)",
   ],
-  "baby_shower_ballon_decor_ with_teddy.png": [
+  "baby_shower_ballon_decor_with_teddy.png": [
     "Balloons: sage green, white, metallic gold, transparent confetti balloons",
     "Backdrop: cream arch panels",
     "Decoration: organic balloon garland",
@@ -205,7 +205,7 @@ const manualItemsUsed = {
     "Decoration: balloon clusters with silver butterfly accents",
     "Props: modern metallic geometric stand",
   ],
-  "baby_shower_balloon_ decoration_with_ net_curtains.png": [
+  "baby_shower_balloon_decoration_with_net_curtains.png": [
     "Balloons: Blue, pink, silver star-shaped, and standard latex balloons",
     "Backdrop: Sheer fabric curtain with string lights",
     "Decoration: Balloon clusters and floral arrangements forming a top garland",
