@@ -191,7 +191,7 @@ const manualItemsUsed = {
     "Artificial green leafs",
     "age number foil big size( 32 inch)",
   ],
-  "baby shower ballon decor with teddy.png": [
+  "baby_shower_ballon_decor_ with_teddy.png": [
     "Balloons: sage green, white, metallic gold, transparent confetti balloons",
     "Backdrop: cream arch panels",
     "Decoration: organic balloon garland",
@@ -205,7 +205,7 @@ const manualItemsUsed = {
     "Decoration: balloon clusters with silver butterfly accents",
     "Props: modern metallic geometric stand",
   ],
-  "baby shower balloon decoration with net curtains.png": [
+  "baby_shower_balloon_ decoration_with_ net_curtains.png": [
     "Balloons: Blue, pink, silver star-shaped, and standard latex balloons",
     "Backdrop: Sheer fabric curtain with string lights",
     "Decoration: Balloon clusters and floral arrangements forming a top garland",
@@ -1319,7 +1319,7 @@ const manualItemsUsed = {
     "Occasion: baby shower celebration",
     "Style: elegant and whimsical pastel-themed decor",
   ],
-  "happy birthday decor  on first birthday.png": [
+  "happy_birthday_decor_on_first_birthday.png": [
     "Balloons: pastel shades (pink, blue, white, lavender)",
     "Decoration: balloon arch or clusters surrounding cradle setup",
     "Backdrop: soft-toned panel with baby-themed text or name",
@@ -1331,7 +1331,7 @@ const manualItemsUsed = {
     "Style: gentle and cozy cradle-themed decor",
     "Note: This decor includes entry in palna (cradle) setup for b'day boy.",
   ],
-  "Mundan party balloon decor with No Hair Don not Care theme.png": [
+  "mundan_party_balloon_decor_with_No_Hair_Don_not_Care_theme.png": [
     "Balloons: pastel blue, pink, green, gold",
     "Decoration: purple board backdrop with playful text and cartoon animal faces",
     "Backdrop: 'NO HAIR DON'T CARE' central text with phrases like 'BALD FUN', 'MUNDAN PARTY', 'BEST DAY EVER'",
@@ -1339,7 +1339,7 @@ const manualItemsUsed = {
     "Occasion: Mundan ceremony celebration",
     "Style: fun and quirky hair-cutting themed decor",
   ],
-  "earthy green gold birthday balloon decor.png": [
+  "earthy_green_gold_ birthday_balloon_decor.png": [
     "Balloons: white, gold, bronze, olive green",
     "Decoration: balloon arch with green leafy vines",
     "Backdrop: brown textured panel with 'Happy Birthday Kushal' in white cursive font",
@@ -1356,7 +1356,7 @@ const manualItemsUsed = {
     "Occasion: 15th birthday celebration",
     "Style: festive and whimsical unicorn-themed decor",
   ],
-  " frozen theme pastel balloon wall birthday decor with Elsa cutouts.png": [
+  " frozen_theme_pastel_ balloon_wall_birthday_decor _with_Elsa_cutouts.png": [
     "Balloons: pastel purple, blue, white, metallic silver",
     "Decoration: textured balloon wall with layered clusters and garlands",
     "Backdrop: neon 'Happy Birthday' sign in cursive",
@@ -1366,7 +1366,7 @@ const manualItemsUsed = {
     "Occasion: birthday celebration",
     "Style: magical and wintry Frozen-themed decor",
   ],
-  "bride to be balloon decor with champagne and ring prop.png": [
+  "bride_to_be_balloon_decor_ with_champagne_and_ring_prop.png": [
     "Balloons: gold, rose gold, white, peach, silver, transparent",
     "Decoration: balloon arch and floor display with green leaf accents",
     "Backdrop: plain white wall with rose gold 'BRIDE TO BE' letter balloons",
@@ -1661,7 +1661,7 @@ const manualItemsUsed = {
     "Occasion: 1st birthday celebration",
     "Style: regal and floral blue-themed milestone decor",
   ],
-  "Car Trunk birthday balloon decor with crown and photo string for birthday.jpg":
+  "car_trunk_birthday_balloon_decor_with_crown and photo string for birthday.jpeg":
     [
       "Balloons: blue, silver, metallic, dolphin-shaped, number '23', round 'Happy Birthday'",
       "Decoration: open Car Trunk filled with balloons and fairy lights",
