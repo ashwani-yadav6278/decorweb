@@ -9,7 +9,6 @@ import decorations from "../../../data/decorations";
 import { getCategory } from "@/lib/getCategory";
 
 export default function GalleryPage() {
-
   // FILTER CATEGORIES
   const categories = [
     "all",
@@ -19,7 +18,6 @@ export default function GalleryPage() {
     "welcome-baby",
     "romantic",
     "car-boot",
-    "haldi",
     "engagement",
     "jungle-theme",
     "kids-theme",
@@ -33,8 +31,7 @@ export default function GalleryPage() {
     activeCategory === "all"
       ? decorations
       : decorations.filter(
-          (item) =>
-            getCategory(item.image) === activeCategory
+          (item) => getCategory(item.image) === activeCategory,
         );
 
   return (
@@ -42,13 +39,9 @@ export default function GalleryPage() {
       {/* FLOATING BUTTONS */}
       <FloatingButtons />
 
-      
-
       {/* FILTER BUTTONS */}
       <div className="flex flex-wrap mt-4 gap-3 justify-center px-4 md:px-6 mb-8">
-
         {categories.map((category) => (
-
           <button
             key={category}
             onClick={() => setActiveCategory(category)}
@@ -63,37 +56,31 @@ export default function GalleryPage() {
           >
             {category.replace("-", " ")}
           </button>
-
         ))}
-
       </div>
-
+      <h1 className="font-bold text-3xl text-center text-amber-800 line-clamp-2">
+        Explore Our Stunning Decorations
+      </h1>
       {/* GALLERY */}
       <div className="p-4 md:p-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-
         {filteredDecorations.map((item) => (
-
           <Link
             href={`/gallery/${item.slug}`}
             key={item.id}
             className="border rounded-2xl shadow hover:shadow-2xl transition duration-300 bg-white overflow-hidden block group"
           >
-
             {/* IMAGE */}
             <div className="relative w-full h-64 overflow-hidden">
-
               <Image
                 src={`/${item.image}`}
                 alt={item.title}
                 fill
                 className="object-cover group-hover:scale-110 transition duration-500"
               />
-
             </div>
 
             {/* DETAILS */}
             <div className="p-4">
-
               <h2 className="font-semibold text-lg line-clamp-2">
                 {item.title}
               </h2>
@@ -103,31 +90,21 @@ export default function GalleryPage() {
               </p>
 
               <div className="mt-4">
-
                 {item.cutPrice && (
                   <p className="text-gray-400 line-through text-sm">
                     {item.cutPrice}
                   </p>
                 )}
 
-                <p className="text-pink-600 font-bold text-2xl">
-                  {item.price}
-                </p>
+                <p className="text-pink-600 font-bold text-2xl">{item.price}</p>
 
                 {item.discount && (
-                  <p className="text-green-600 text-sm mt-1">
-                    {item.discount}
-                  </p>
+                  <p className="text-green-600 text-sm mt-1">{item.discount}</p>
                 )}
-
               </div>
-
             </div>
-
           </Link>
-
         ))}
-
       </div>
 
       {/* EMPTY STATE */}

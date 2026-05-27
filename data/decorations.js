@@ -1491,7 +1491,7 @@ const manualItemsUsed = {
       "Props: white marble-top table with pastel balloons around edge",
       "Occasion: 4th birthday celebration",
     ],
-  "pastel baby shower balloon decor with fringe backdrop and themed props.jpg":
+  "pastel_baby_shower_balloon_decoration_with_backdrop.jpg":
     [
       "Balloons: pastel white, pink, blue, gold",
       "Decoration: balloon arch around metallic fringe curtain backdrop",
@@ -1878,7 +1878,7 @@ const manualItemsUsed = {
       "Occasion: baby shower celebration",
       "Style: cozy and elegant teddy-themed decor with rustic accents",
     ],
-  "Happy Birthday MAHI balloon decor with pink-silver arch and golden number.jpg":
+  "Pink Silver Birthday Balloon Decoration for Girls.jpg":
     [
       "Balloons: pink, silver, golden number '1', golden letter balloons spelling 'MAHI'",
       "Decoration: circular balloon arch with hanging triangular 'HAPPY BIRTHDAY' banner",

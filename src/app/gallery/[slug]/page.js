@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 
 /* SEO */
 export async function generateMetadata({ params }) {
+
   const { slug } = await params;
 
   const decoration = decorations.find(
@@ -13,25 +14,82 @@ export async function generateMetadata({ params }) {
 
   if (!decoration) {
     return {
-      title: "Decoration Not Found",
+      title: "Decoration Not Found | Balloonzaa",
+      description:
+        "The requested decoration page could not be found.",
     };
   }
 
   return {
-    title: decoration.title,
-    description: decoration.description,
+    title: `${decoration.title}`,
+
+    description:
+      ` Book premium balloon decoration setups for birthdays, anniversaries, baby showers and surprise celebrations in Faridabad.`,
+
+    keywords: [
+      decoration.title,
+      "balloon decoration",
+      "birthday decoration",
+      "anniversary decoration",
+      "baby shower decoration",
+      "party decoration",
+      "balloon decoration in Faridabad",
+    ],
+
+    alternates: {
+      canonical: `https://www.balloonzaa.in/gallery/${decoration.slug}`,
+    },
+
+    openGraph: {
+      title: `${decoration.title} | Balloonzaa`,
+
+      description:
+        `${decoration.description} Book beautiful balloon decorations in Faridabad.`,
+
+      url: `https://www.balloonzaa.in/gallery/${decoration.slug}`,
+
+      siteName: "Balloonzaa",
+
+      images: [
+        {
+          url: `https://www.balloonzaa.in/${decoration.image}`,
+          width: 1200,
+          height: 630,
+          alt: decoration.title,
+        },
+      ],
+
+      locale: "en_IN",
+      type: "website",
+    },
+
+    twitter: {
+      card: "summary_large_image",
+
+      title: `${decoration.title} | Balloonzaa`,
+
+      description:
+        `${decoration.description} Explore premium balloon decorations.`,
+
+      images: [
+        `https://www.balloonzaa.in/${decoration.image}`,
+      ],
+    },
   };
 }
 
 /* STATIC PAGES */
 export async function generateStaticParams() {
+
   return decorations.map((item) => ({
     slug: item.slug,
   }));
+
 }
 
 /* PAGE */
 export default async function DecorationPage({ params }) {
+
   const { slug } = await params;
 
   const decoration = decorations.find(
@@ -42,7 +100,7 @@ export default async function DecorationPage({ params }) {
     notFound();
   }
 
-  /* SHOW ALL OTHER DECORATIONS */
+  /* RELATED DECORATIONS */
   const relatedDecorations = decorations.filter(
     (item) => item.slug !== decoration.slug
   );
@@ -55,12 +113,15 @@ export default async function DecorationPage({ params }) {
 
         {/* IMAGE */}
         <div className="relative w-full h-[500px]">
+
           <Image
             src={`/${decoration.image}`}
             alt={decoration.title}
             fill
+            priority
             className="object-cover rounded-2xl"
           />
+
         </div>
 
         {/* DETAILS */}
@@ -96,7 +157,7 @@ export default async function DecorationPage({ params }) {
             {decoration.description}
           </p>
 
-          {/* DELIVERY DETAILS DROPDOWN */}
+          {/* DELIVERY DETAILS */}
           <div className="mt-8 border rounded-2xl overflow-hidden bg-white shadow-sm">
 
             <details className="group">
@@ -155,6 +216,7 @@ export default async function DecorationPage({ params }) {
 
           {/* ITEMS USED */}
           {decoration.itemsUsed?.length > 0 && (
+
             <div className="mt-8">
 
               <h2 className="text-2xl font-semibold mb-3">
@@ -162,14 +224,19 @@ export default async function DecorationPage({ params }) {
               </h2>
 
               <ul className="list-disc pl-5 space-y-2 text-gray-700">
+
                 {decoration.itemsUsed.map((item, index) => (
+
                   <li key={index}>
                     {item}
                   </li>
+
                 ))}
+
               </ul>
 
             </div>
+
           )}
 
           {/* BUTTONS */}
@@ -194,6 +261,7 @@ export default async function DecorationPage({ params }) {
           </div>
 
         </div>
+
       </div>
 
       {/* RELATED DECORATIONS */}
@@ -259,6 +327,7 @@ export default async function DecorationPage({ params }) {
           ))}
 
         </div>
+
       </div>
 
     </div>

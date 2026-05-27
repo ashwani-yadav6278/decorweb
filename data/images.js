@@ -1,7 +1,7 @@
 const images = [
   "Oh Baby teddy bear balloon decor with gold sequin wall and BABY blocks.jpg",
-  "Happy Birthday MAHI balloon decor with pink-silver arch and golden number.jpg",
-  "pastel baby shower balloon decor with fringe backdrop and themed props.jpg",
+  "Pink Silver Birthday Balloon Decoration for Girls.jpg",
+  "pastel_baby_shower_balloon_decoration_with_backdrop.jpg",
   "blue gold butterfly first birthday balloon decor with photo string and teddy.jpeg",
   "Tiara's First Year balloon decor with photo collage board.jpeg",
   "Prarthana Turns eight gymnastics-themed birthday decor with rainbow and star balloons.jpeg",
