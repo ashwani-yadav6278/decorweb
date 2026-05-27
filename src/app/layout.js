@@ -11,6 +11,9 @@ export const metadata = {
     "Book balloon decoration in Faridabad for birthday, anniversary, baby shower & events. Same-day setup, affordable price.",
 
   metadataBase: new URL("https://www.balloonzaa.in"),
+  alternates: {
+  canonical: "https://www.balloonzaa.in",
+},
 
   openGraph: {
     title: "Balloon Decoration in Faridabad | Balloonzaa",
