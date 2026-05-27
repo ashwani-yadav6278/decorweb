@@ -160,7 +160,7 @@ const manualItemsUsed = {
     "2 heart and star(small) foil balloons",
     "8 star or heart(small) balloons",
   ],
-  "arch_balloon_birthday_decoration second.jpg": [
+  ".jpg": [
     "Balloons: light gray, purple and light blue ",
     "Happy birthday banner paper ",
     "age number 2(samll size)",
@@ -175,7 +175,7 @@ const manualItemsUsed = {
     "2 golden curtains",
     "1pc round foil balloon",
   ],
-  "arch_girl_balloon_birthday_decoration7.jpg": [
+  "arch_girl_balloon_birthday_decoration.jpg": [
     "Balloons: pink and purple (pastel) ",
     "Happy birthday Led light banner(rent)",
     "age number 29(big size,32')",
@@ -191,7 +191,7 @@ const manualItemsUsed = {
     "Artificial green leafs",
     "age number foil big size( 32 inch)",
   ],
-  "baby shower ballon decor.PNG": [
+  "baby shower ballon decor.png": [
     "Balloons: sage green, white, metallic gold, transparent confetti balloons",
     "Backdrop: cream arch panels",
     "Decoration: organic balloon garland",
@@ -199,13 +199,13 @@ const manualItemsUsed = {
     "Props: teddy bear",
     "Accessories: artificial gold leaves",
   ],
-  "Baby shower balloon  decoration (197).JPG": [
+  "Baby shower balloon  decoration.jpg": [
     "Balloons: lavender, purple, white, chrome bronze",
     "Backdrop: large lavender-colored panel with text 'Ria's Baby Shower'",
     "Decoration: balloon clusters with silver butterfly accents",
     "Props: modern metallic geometric stand",
   ],
-  "baby shower balloon decoration.PNG": [
+  "baby shower balloon decoration.png": [
     "Balloons: Blue, pink, silver star-shaped, and standard latex balloons",
     "Backdrop: Sheer fabric curtain with string lights",
     "Decoration: Balloon clusters and floral arrangements forming a top garland",
@@ -241,7 +241,7 @@ const manualItemsUsed = {
     'Props: Themed foil balloons — baby bottle with "IT\'S A BOY" and baby foot',
     "Accessories: Confetti-filled transparent balloons",
   ],
-  "baby_shower_balloondecoration (21).jpg": [
+  "baby_shower_balloon decoration.jpg": [
     "Balloons: Pastel pink, blue, white, gold balloons; themed foil balloons",
     'Backdrop: Silver fringe curtain with gold foil "BABY SHOWER" balloons',
     "Decoration: Balloon arch surrounding the backdrop",
@@ -262,7 +262,7 @@ const manualItemsUsed = {
     "Accessories: Gold starburst ornaments",
     "Cake table with themed decor",
   ],
-  "Ring Balloon Birthday Decoration (76).jpg": [
+  "Ring Balloon Birthday Decoration.jpg": [
     "Balloons: Red, purple, blue, green, orange, white balloons; metallic star and cartoon character balloons",
     'Backdrop: Archway with golden "Happy Birthday" banner',
     "Decoration: Multicolor balloon arch and clusters around doorway",
@@ -283,13 +283,13 @@ const manualItemsUsed = {
     "Props: Balloon sculptures shaped like babies on either side of the arch",
   ],
 
-  "Arch_ballon_birthday_decoration.jpg": [
+  "Arch balloon birthday decoration pink black.jpg": [
     "Balloons: Pink, white, black balloons; silver foil letter and number balloons",
     'Backdrop: Shiny pink fringe curtain with silver foil balloons spelling "6 ANAYA"',
     "Decoration: Balloon arch around doorway and clusters on the side",
     "Props: Framed photograph, wall-mounted light fixture",
   ],
-  "balloon birthday decoration.PNG": [
+  "balloon birthday decoration.png": [
     'Balloons: Pink, rose gold, purple balloons; silver foil number balloons "11"',
     'Backdrop: String light curtain with "HAPPY BIRTHDAY" banner',
     "Decoration: Balloon arch and columns with butterfly cutouts",
@@ -1315,7 +1315,7 @@ const manualItemsUsed = {
     "Occasion: baby shower celebration",
     "Style: elegant and whimsical pastel-themed decor",
   ],
-  "baby birthday decor with palna themed decor.PNG": [
+  "baby birthday decor with palna themed decor.png": [
     "Balloons: pastel shades (pink, blue, white, lavender)",
     "Decoration: balloon arch or clusters surrounding cradle setup",
     "Backdrop: soft-toned panel with baby-themed text or name",
@@ -1327,7 +1327,7 @@ const manualItemsUsed = {
     "Style: gentle and cozy cradle-themed decor",
     "Note: This decor includes entry in palna (cradle) setup for b'day boy.",
   ],
-  "Mundan party balloon decor with No Hair Don’t Care theme.PNG": [
+  "Mundan party balloon decor with No Hair Don’t Care theme.png": [
     "Balloons: pastel blue, pink, green, gold",
     "Decoration: purple board backdrop with playful text and cartoon animal faces",
     "Backdrop: 'NO HAIR DON'T CARE' central text with phrases like 'BALD FUN', 'MUNDAN PARTY', 'BEST DAY EVER'",
@@ -1335,7 +1335,7 @@ const manualItemsUsed = {
     "Occasion: Mundan ceremony celebration",
     "Style: fun and quirky hair-cutting themed decor",
   ],
-  "earthy green gold birthday balloon decor for Kushal.PNG": [
+  "earthy green gold birthday balloon decor for Kushal.png": [
     "Balloons: white, gold, bronze, olive green",
     "Decoration: balloon arch with green leafy vines",
     "Backdrop: brown textured panel with 'Happy Birthday Kushal' in white cursive font",
@@ -1352,7 +1352,7 @@ const manualItemsUsed = {
     "Occasion: 15th birthday celebration",
     "Style: festive and whimsical unicorn-themed decor",
   ],
-  "Frozen theme pastel balloon wall birthday decor with Elsa cutouts.PNG": [
+  "Frozen theme pastel balloon wall birthday decor with Elsa cutouts.png": [
     "Balloons: pastel purple, blue, white, metallic silver",
     "Decoration: textured balloon wall with layered clusters and garlands",
     "Backdrop: neon 'Happy Birthday' sign in cursive",
@@ -1362,7 +1362,7 @@ const manualItemsUsed = {
     "Occasion: birthday celebration",
     "Style: magical and wintry Frozen-themed decor",
   ],
-  "bride to be balloon decor with champagne and ring props.PNG": [
+  "bride to be balloon decor with champagne and ring props.png": [
     "Balloons: gold, rose gold, white, peach, silver, transparent",
     "Decoration: balloon arch and floor display with green leaf accents",
     "Backdrop: plain white wall with rose gold 'BRIDE TO BE' letter balloons",

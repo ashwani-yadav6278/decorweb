@@ -13,7 +13,7 @@ export default function Hero() {
     "/decorations/baby_shower_balloon_birthday_decoration.jpg",
     "/decorations/balloon birthday decoration (44).PNG",
     "/decorations/anniversary 25th ring decor.jpg",
-    "/decorations/arch_girl_balloon_birthday_decoration7.jpg",
+    "/decorations/arch_girl_balloon_birthday_decoration.jpg",
     "/decorations/balloon birthday decoration (2).jpg",
     "/decorations/balloon birthday decoration (20).PNG",
     "/decorations/ring_balloon_birtday_decoration.jpg",
