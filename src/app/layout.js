@@ -13,7 +13,7 @@ export const metadata = {
   metadataBase: new URL("https://www.balloonzaa.in"),
 
   verification: {
-    google: "XOaShhhNu3kL9St8Lfbx9JQUYsW7hR1niPwrAFYBIAA",
+    google: "T75HhKJ91Y-rtQmIMRkyXNPny6mpnt2Ll1bnAQrsSt8",
   },
 
   alternates: {
