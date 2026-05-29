@@ -459,7 +459,7 @@ const manualItemsUsed = {
     "Accessories: illuminated marquee numbers '60'",
     "ThemeElements: retirement milestone celebration",
   ],
-  "Blue & Silver Birthday Balloon Decor.jpg": [
+  "Blue and Silver Birthday Balloon Decor.jpg": [
     "Balloons: white, light blue, silver, dark blue metallic",
     "FoilBalloons: metallic star-shaped balloons",
     "ThemeProps: flower-shaped balloon clusters, disco balls",
@@ -489,7 +489,7 @@ const manualItemsUsed = {
     "Accessories: illuminated marquee numbers '45'",
     "ThemeElements: milestone birthday with celebration theme",
   ],
-  "Black & Gold Draped Birthday Balloon Decor.jpg": [
+  "Black and Gold Draped Birthday Balloon Decor.jpg": [
     "Balloons: black, gold",
     "FoilBalloons: none specified",
     "ThemeProps: pampas grass",
