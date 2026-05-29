@@ -11,7 +11,6 @@ import Image from "next/image";
 export default function Hero() {
   const images = [
     "/decorations/baby_shower_balloon_birthday_decoration.jpg",
-    "/decorations/balloon birthday decoration (44).PNG",
     "/decorations/anniversary 25th ring decor.jpg",
     "/decorations/arch_girl_balloon_birthday_decoration.jpg",
     "/decorations/balloon birthday decoration (2).jpg",

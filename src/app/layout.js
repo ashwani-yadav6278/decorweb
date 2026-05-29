@@ -11,9 +11,14 @@ export const metadata = {
     "Book balloon decoration in Faridabad for birthday, anniversary, baby shower & events. Same-day setup, affordable price.",
 
   metadataBase: new URL("https://www.balloonzaa.in"),
+
+  verification: {
+    google: "XOaShhhNu3kL9St8Lfbx9JQUYsW7hR1niPwrAFYBIAA",
+  },
+
   alternates: {
-  canonical: "https://www.balloonzaa.in",
-},
+    canonical: "https://www.balloonzaa.in",
+  },
 
   openGraph: {
     title: "Balloon Decoration in Faridabad | Balloonzaa",
@@ -21,7 +26,7 @@ export const metadata = {
     description:
       "Affordable balloon decoration service in Faridabad with same day home setup.",
 
-    url: "https://www.balloonzaa.in/",
+    url: "https://www.balloonzaa.in",
 
     siteName: "Balloonzaa",
 
@@ -57,12 +62,6 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        {/* Google Search Console Verification */}
-        <meta
-          name="google-site-verification"
-          content="XOaShhhNu3kL9St8Lfbx9JQUYsW7hR1niPwrAFYBIAA"
-        />
-
         {/* Google Analytics */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-MXL4588KCX"
@@ -94,15 +93,14 @@ export default function RootLayout({ children }) {
       </head>
 
       <body>
-        
-          <Header />
+        <Header />
 
-          {children}
+        {children}
 
-          <CallButton />
+        <CallButton />
 
-          <Footer />
-        
+        <Footer />
+
         {/* Local Business Schema */}
         <script
           suppressHydrationWarning
@@ -112,15 +110,29 @@ export default function RootLayout({ children }) {
               "@context": "https://schema.org",
               "@type": "LocalBusiness",
               name: "Balloonzaa",
+              image: "https://www.balloonzaa.in/og-image.png",
               url: "https://www.balloonzaa.in",
               telephone: "+919582060618",
-              areaServed: "Faridabad",
+
               address: {
                 "@type": "PostalAddress",
                 addressLocality: "Faridabad",
                 addressRegion: "Haryana",
                 addressCountry: "IN",
               },
+
+              areaServed: [
+                "Faridabad",
+                "Gurgaon",
+                "Delhi NCR",
+              ],
+
+              priceRange: "₹₹",
+
+              sameAs: [
+                "https://www.instagram.com/",
+                "https://www.facebook.com/",
+              ],
             }),
           }}
         />
