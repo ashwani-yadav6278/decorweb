@@ -74,6 +74,69 @@ function getItemsUsed(title) {
   return items;
 }
 
+/* -------------------- SEO HELPERS -------------------- */
+
+// Detect category automatically
+function getCategory(title) {
+  const lower = title.toLowerCase();
+
+  if (lower.includes("baby shower")) {
+    return "baby-shower";
+  }
+
+  if (
+    lower.includes("welcome baby") ||
+    lower.includes("baby boy") ||
+    lower.includes("baby girl")
+  ) {
+    return "welcome-baby";
+  }
+
+  if (lower.includes("anniversary")) {
+    return "anniversary";
+  }
+
+  if (lower.includes("romantic")) {
+    return "romantic";
+  }
+
+  if (
+    lower.includes("jungle") ||
+    lower.includes("cocomelon") ||
+    lower.includes("boss baby")
+  ) {
+    return "kids-theme";
+  }
+
+  return "birthday";
+}
+
+// SEO description
+function generateDescription(title) {
+  return `${title} in Faridabad with premium balloons, backdrop setup, foil balloons, LED lights, and customized decoration themes by Balloonzaa.`;
+}
+
+// SEO alt text
+function generateAlt(title) {
+  return `${title} setup in Faridabad`;
+}
+
+// Generate tags
+function generateTags(title) {
+  const lower = title.toLowerCase();
+
+  const tags = [];
+
+  if (lower.includes("baby")) tags.push("baby");
+  if (lower.includes("birthday")) tags.push("birthday");
+  if (lower.includes("anniversary")) tags.push("anniversary");
+  if (lower.includes("ring")) tags.push("ring-decoration");
+  if (lower.includes("jungle")) tags.push("jungle-theme");
+  if (lower.includes("boss baby")) tags.push("boss-baby");
+  if (lower.includes("pastel")) tags.push("pastel");
+
+  return tags;
+}
 
 /* -------------------- MANUAL ITEMS (IMAGE NAME BASED) -------------------- */
 
@@ -1926,6 +1989,31 @@ const manualItemsUsed = {
 
 
 };
+function generateSeoContent(title, items = []) {
+  return `
+${title} is one of our premium balloon decoration setups in Faridabad.
+
+This decoration includes ${items.slice(0, 5).join(", ")}.
+
+Perfect for birthdays, anniversaries, baby showers, welcome baby celebrations, surprise parties and special events.
+
+Balloonzaa provides professional balloon decoration services in Faridabad with premium-quality balloons, experienced decorators and same-day installation.
+  `;
+}
+const manualSeoContent = {
+  "anniversary_twentyfifth_ring_balloon_decoration.jpg": `
+    This 25th Anniversary Ring Balloon Decoration in Faridabad features
+    chrome balloons arranged on a premium ring setup with a Happy Anniversary
+    neon sign, illuminated number props, decorative butterflies, and a cake table.
+
+    This decoration is ideal for silver jubilee anniversary celebrations,
+    surprise anniversary parties, hotel room decorations, and home events.
+
+    Balloonzaa provides professional anniversary balloon decoration services
+    in Faridabad with premium-quality balloons, same-day setup, and complete
+    installation by experienced decorators.
+  `,
+};
 
 // 👉 Add more images anytime (SAFE)
 
@@ -2127,53 +2215,41 @@ const prices = [
 /* -------------------- FINAL DECORATIONS DATA -------------------- */
 
   
-  const decorations = images.map((img, index) => {
-  const title = generateTitle(img);
-  const sellingPrice = prices[index];
-  const numericPrice = sellingPrice
-    ? parsePrice(sellingPrice)
-    : null;
+const decorations = images.map((img, index) => {
+  const filename = img.split("/").pop() || "";
 
-  const itemsUsed =
-    manualItemsUsed[img] || getItemsUsed(title);
+  const title = generateTitle(filename);
 
-  // No price case
-  if (!numericPrice) {
-    return {
-      id: index + 1,
-      slug: generateSlug(img),
-      image: img,
-      title,
-      description:`${title} ideal for special celebrations.Same day setup available in Faridabad.`,
-      price: "Price not set",
-      cutPrice: null,
-      discount: null,
-      itemsUsed,
-    };
-  }
+  const slug = generateSlug(filename);
 
-  const discountAmount =
-    getDiscountAmount(numericPrice);
+  // Create items first
+  const items =
+    manualItemsUsed[filename] ||
+    getItemsUsed(title);
 
   return {
-    id: index + 1,
-    slug: generateSlug(img),
-    image: img,
+    id: `${slug}-${index}`,
+
     title,
-    description: `${title} ideal for celebrations. Same day setup available in Faridabad.`,
-    price: sellingPrice,
-    cutPrice: formatPrice(
-      numericPrice + discountAmount
-    ),
-    discount: `Save ₹${discountAmount}`,
-    itemsUsed,
+
+    slug,
+
+    image: img,
+
+    category: getCategory(title),
+
+    description: generateDescription(title),
+
+    seoContent:
+      manualSeoContent[filename] ||
+      generateSeoContent(title, items),
+
+    alt: generateAlt(title),
+
+    tags: generateTags(title),
+
+    items,
   };
 });
 
-
-
-
-
-
-
-  export default decorations;
+export default decorations;

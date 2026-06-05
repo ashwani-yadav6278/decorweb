@@ -23,9 +23,9 @@ export default function Areas() {
 
   return (
     <section className="px-6 py-20 max-w-7xl mx-auto">
-      <h2 className="text-4xl font-bold text-center mb-4">
+      <h1 className="text-4xl font-bold text-center mb-4">
         Areas We Serve in <span className="text-pink-500">Faridabad</span>
-      </h2>
+      </h1>
 
       <p className="text-center text-gray-600 max-w-3xl mx-auto mb-14">
         Balloonza provides professional balloon decoration services in
@@ -43,9 +43,9 @@ export default function Areas() {
             transform transition hover:scale-105 hover:shadow-2xl`}
           >
             <p className="text-sm opacity-90">Balloon Decoration</p>
-            <h3 className="text-xl font-bold mt-2">
+            <h2 className="text-xl font-bold mt-2">
               Sector {sector}
-            </h3>
+            </h2>
             <p className="text-sm mt-1">Faridabad</p>
           </div>
         ))}

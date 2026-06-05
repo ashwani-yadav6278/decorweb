@@ -44,7 +44,7 @@ export default function Header() {
           <Link href="/areas" className={navLinkClass("/areas")}>Areas</Link>
           <Link href="/about" className={navLinkClass("/about")}>About us</Link>
           <Link href="/contact" className={navLinkClass("/contact")}>Contact</Link>
-          
+           <Link href="/service" className={navLinkClass("/service")}>Service</Link>
           <Link href="/blog" className={navLinkClass("/blog")}>Blog</Link>
 
           <a

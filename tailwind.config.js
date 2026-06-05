@@ -1,6 +1,11 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["./src/app/**/*.{js,jsx}", "./src/components/**/*.{js,jsx}"],
+  content: [
+    "./src/app/**/*.{js,jsx,ts,tsx,mdx}",
+    "./src/components/**/*.{js,jsx,ts,tsx}",
+    "./src/**/*.{js,jsx,ts,tsx}",
+  ],
+
   theme: {
     extend: {
       colors: {
@@ -12,5 +17,8 @@ module.exports = {
       },
     },
   },
-  plugins: [],
+
+  plugins: [
+    require("@tailwindcss/typography"),
+  ],
 };

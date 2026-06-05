@@ -5,7 +5,7 @@ import CallButton from "@/components/CallButton";
 import "./globals.css";
 
 export const metadata = {
-  title: "Birthday Balloon Decoration in Faridabad | Balloonzaa",
+  title:"Birthday Balloon Decoration in Faridabad| Balloon Decoration at Home | Balloonzaa",
 
   description:
     "Book balloon decoration in Faridabad for birthday, anniversary, baby shower & events. Same-day setup, affordable price.",

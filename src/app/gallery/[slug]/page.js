@@ -5,35 +5,43 @@ import { notFound } from "next/navigation";
 
 /* SEO */
 export async function generateMetadata({ params }) {
-
   const { slug } = await params;
 
-  const decoration = decorations.find(
-    (item) => item.slug === slug
-  );
+  const decoration = decorations.find((item) => item.slug === slug);
 
   if (!decoration) {
     return {
       title: "Decoration Not Found | Balloonzaa",
-      description:
-        "The requested decoration page could not be found.",
+      description: "The requested decoration page could not be found.",
     };
   }
 
   return {
     title: `${decoration.title}`,
 
-    description:
-      ` Book premium balloon decoration setups for birthdays, anniversaries, baby showers and surprise celebrations in Faridabad.`,
+    description: decoration.description,
 
     keywords: [
       decoration.title,
-      "balloon decoration",
-      "birthday decoration",
-      "anniversary decoration",
-      "baby shower decoration",
+      "balloon birthday decoration",
+      "birthday balloon decoration",
+      "anniversary balloon decoration",
+      "baby shower balloon decoration",
+      "balloon decoration baby shower",
+      "welcome baby decoration in Faridabad",
       "party decoration",
+      "welcome baby balloon decoration in ideas",
       "balloon decoration in Faridabad",
+      "romantic room  decoration for her",
+      "car boot decoration for girldfriend",
+      "engagement decoration",
+      "jungle theme decoration",
+      "kids theme decoration",
+      "first night decoration ideas",
+      "retirement decoration",
+      "couple room  decoration ideas",
+      "themed decoration ideas for boy",
+      "newborn baby decoration ideas",
     ],
 
     alternates: {
@@ -41,10 +49,9 @@ export async function generateMetadata({ params }) {
     },
 
     openGraph: {
-      title: `${decoration.title} | Balloonzaa`,
+      title: `${decoration.title} in Faridabad| Balloonzaa`,
 
-      description:
-        `${decoration.description} Book beautiful balloon decorations in Faridabad.`,
+      description: decoration.description,
 
       url: `https://www.balloonzaa.in/gallery/${decoration.slug}`,
 
@@ -55,7 +62,7 @@ export async function generateMetadata({ params }) {
           url: `https://www.balloonzaa.in/${decoration.image}`,
           width: 1200,
           height: 630,
-          alt: decoration.title,
+          alt: decoration.alt,
         },
       ],
 
@@ -68,33 +75,25 @@ export async function generateMetadata({ params }) {
 
       title: `${decoration.title} | Balloonzaa`,
 
-      description:
-        `${decoration.description} Explore premium balloon decorations.`,
+      description: decoration.description,
 
-      images: [
-        `https://www.balloonzaa.in/${decoration.image}`,
-      ],
+      images: [`https://www.balloonzaa.in/${decoration.image}`],
     },
   };
 }
 
 /* STATIC PAGES */
 export async function generateStaticParams() {
-
   return decorations.map((item) => ({
     slug: item.slug,
   }));
-
 }
 
 /* PAGE */
 export default async function DecorationPage({ params }) {
-
   const { slug } = await params;
 
-  const decoration = decorations.find(
-    (item) => item.slug === slug
-  );
+  const decoration = decorations.find((item) => item.slug === slug);
 
   if (!decoration) {
     notFound();
@@ -102,38 +101,87 @@ export default async function DecorationPage({ params }) {
 
   /* RELATED DECORATIONS */
   const relatedDecorations = decorations.filter(
-    (item) => item.slug !== decoration.slug
+    (item) =>
+      item.category === decoration.category && item.slug !== decoration.slug,
   );
 
   return (
     <div className="max-w-7xl mx-auto p-6">
-
       {/* MAIN SECTION */}
       <div className="grid md:grid-cols-2 gap-10">
-
         {/* IMAGE */}
-        <div className="relative w-full h-[500px]">
+        {/* IMAGE + DELIVERY DETAILS */}
+<div>
 
-          <Image
-            src={`/${decoration.image}`}
-            alt={decoration.title}
-            fill
-            priority
-            className="object-cover rounded-2xl"
-          />
+  {/* IMAGE */}
+  <div className="relative w-full h-[500px]">
+    <Image
+      src={`/${decoration.image}`}
+      alt={decoration.alt}
+      fill
+      priority
+      className="object-cover rounded-2xl"
+    />
+  </div>
 
+  {/* DELIVERY DETAILS */}
+  <div className="mt-8 border rounded-2xl overflow-hidden bg-white shadow-sm">
+    <details className="group">
+      <summary className="flex items-center justify-between cursor-pointer p-5 font-semibold text-gray-800 list-none">
+
+        <div className="flex items-center gap-2 text-lg">
+          🚚 Delivery Detail
         </div>
 
+        <span className="transition-transform duration-300 group-open:rotate-180 text-xl">
+          ⌃
+        </span>
+
+      </summary>
+
+      <div className="px-6 pb-6 text-gray-600 text-sm leading-7">
+        <ul className="space-y-3 list-disc pl-5">
+
+          <li>
+            Displayed images are illustrative; actual products may vary based on availability.
+          </li>
+
+          <li>
+            Our balloon expert will arrive at your selected time slot.
+          </li>
+
+          <li>
+            Please provide a stool or ladder for ceiling decoration.
+          </li>
+
+          <li>
+            Decoration can be arranged in hotel rooms with prior permission.
+          </li>
+
+          <li>
+            Rental items will be collected the following day.
+          </li>
+
+          <li>
+            Complaints must be reported within 2 hours of delivery.
+          </li>
+
+          <li>
+            No cancellation once decoration work has started.
+          </li>
+
+        </ul>
+      </div>
+    </details>
+  </div>
+
+</div>
         {/* DETAILS */}
         <div>
-
-          <h1 className="text-3xl md:text-4xl font-bold">
-            {decoration.title}
-          </h1>
+          <h1 className="text-3xl md:text-4xl font-bold">{decoration.title}</h1>
 
           {/* PRICE */}
           <div className="mt-5">
-
             {decoration.cutPrice && (
               <p className="text-gray-400 line-through text-lg">
                 {decoration.cutPrice}
@@ -149,7 +197,6 @@ export default async function DecorationPage({ params }) {
                 {decoration.discount}
               </p>
             )}
-
           </div>
 
           {/* DESCRIPTION */}
@@ -158,90 +205,32 @@ export default async function DecorationPage({ params }) {
           </p>
 
           {/* DELIVERY DETAILS */}
-          <div className="mt-8 border rounded-2xl overflow-hidden bg-white shadow-sm">
-
-            <details className="group">
-
-              <summary className="flex items-center justify-between cursor-pointer p-5 font-semibold text-gray-800 list-none">
-
-                <div className="flex items-center gap-2 text-lg">
-                  🚚 Delivery Detail
-                </div>
-
-                <span className="transition-transform duration-300 group-open:rotate-180 text-xl">
-                  ⌃
-                </span>
-
-              </summary>
-
-              <div className="px-6 pb-6 text-gray-600 text-sm leading-7">
-
-                <ul className="space-y-3 list-disc pl-5">
-
-                  <li>
-                    Displayed images are illustrative; actual products may vary in shape, color, or design based on availability.
-                  </li>
-
-                  <li>
-                    Our balloon expert will arrive at your chosen time slot to set up the balloons.
-                  </li>
-
-                  <li>
-                    Please provide a stool or ladder to assist with ceiling decoration.
-                  </li>
-
-                  <li>
-                    Decoration can be arranged in hotel rooms with prior permission from hotel management.
-                  </li>
-
-                  <li>
-                    All decoration items are rented and will be collected the following day.
-                  </li>
-
-                  <li>
-                    Any complaints must be reported within 2 hours of delivery.
-                  </li>
-
-                  <li>
-                    No cancellations or rescheduling are permitted once decoration has begun.
-                  </li>
-
-                </ul>
-
-              </div>
-
-            </details>
-
-          </div>
+          
 
           {/* ITEMS USED */}
-          {decoration.itemsUsed?.length > 0 && (
-
+          {decoration.items?.length > 0 && (
             <div className="mt-8">
-
-              <h2 className="text-2xl font-semibold mb-3">
-                Items Used
-              </h2>
+              <h2 className="text-2xl font-semibold mb-3">Items Used</h2>
 
               <ul className="list-disc pl-5 space-y-2 text-gray-700">
-
-                {decoration.itemsUsed.map((item, index) => (
-
-                  <li key={index}>
-                    {item}
-                  </li>
-
+                {decoration.items.map((item, index) => (
+                  <li key={index}>{item}</li>
                 ))}
-
               </ul>
-
             </div>
-
           )}
+          {/* SEO CONTENT */}
+          {decoration.seoContent && (
+            <section className="mt-10">
+              <h2 className="text-2xl font-bold mb-4">About This Decoration</h2>
 
+              <div className="text-gray-700 leading-8 whitespace-pre-line">
+                {decoration.seoContent}
+              </div>
+            </section>
+          )}
           {/* BUTTONS */}
           <div className="flex flex-wrap gap-4 mt-10">
-
             <a
               href="tel:+919582060618"
               className="bg-blue-600 hover:bg-blue-700 transition text-white px-8 py-4 rounded-xl font-semibold"
@@ -257,51 +246,38 @@ export default async function DecorationPage({ params }) {
             >
               💬 Book on WhatsApp
             </a>
-
           </div>
-
         </div>
-
       </div>
 
       {/* RELATED DECORATIONS */}
       <div className="mt-24">
-
-        <h2 className="text-4xl font-bold mb-10">
-          Explore More Decorations
-        </h2>
+        <h2 className="text-4xl font-bold mb-10">Related Decorations</h2>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
-
-          {relatedDecorations.map((item) => (
-
+          {relatedDecorations.slice(0, 8).map((item) => (
             <Link
               key={item.id}
               href={`/gallery/${item.slug}`}
               className="border rounded-2xl overflow-hidden shadow hover:shadow-xl transition bg-white"
             >
-
               {/* IMAGE */}
               <div className="relative w-full h-72">
-
                 <Image
                   src={`/${item.image}`}
-                  alt={item.title}
+                  alt={item.alt}
                   fill
                   className="object-cover"
                 />
-
               </div>
 
               {/* CONTENT */}
               <div className="p-5">
-
                 <h3 className="font-semibold text-lg line-clamp-2">
                   {item.title}
                 </h3>
 
                 <div className="mt-3">
-
                   {item.cutPrice && (
                     <p className="text-gray-400 line-through text-sm">
                       {item.cutPrice}
@@ -317,19 +293,38 @@ export default async function DecorationPage({ params }) {
                       {item.discount}
                     </p>
                   )}
-
                 </div>
-
               </div>
-
             </Link>
-
+            
           ))}
-
         </div>
-
+        <Link href="/gallery" className="text-blue-500 text-2xl hover:text-blue-700">
+          <div className="flex items-center gap-2">
+            <span>←</span>
+            <span>Back to Gallery</span>
+          </div>
+        </Link>
       </div>
-
     </div>
   );
 }
+
+<div className="max-w-7xl mx-auto p-6">
+  {/* BREADCRUMBS */}
+  <div className="text-sm text-gray-500 mb-6 flex flex-wrap gap-2">
+    <Link href="/" className="hover:text-pink-500">
+      Home
+    </Link>
+
+    <span>/</span>
+
+    <Link href="/gallery" className="hover:text-pink-500">
+      Gallery
+    </Link>
+
+    <span>/</span>
+
+    <span className="text-gray-700">{decorations.title}</span>
+  </div>
+</div>;

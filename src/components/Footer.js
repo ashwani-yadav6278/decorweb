@@ -92,7 +92,7 @@ export default function Footer() {
           <div className="bg-[#111] rounded-xl p-4 space-y-3">
             <div className="flex gap-3 text-sm">
               <MapPin className="text-[#6D5DF6]" size={18} />
-              <span>2H/58, New Industrial Town, Faridabad, Haryana 121001</span>
+              <span>Shop no. 2593/7A, Sector-7, Faridabad, Haryana, PinCode:121006</span>
             </div>
 
             <div className="flex gap-3 text-sm">
