@@ -71,17 +71,14 @@ export default async function ServicePage({ params }) {
                 <div className="p-5">
 
                   <Image
-                    src={service.image}
-                    alt={service.title}
-                    width={700}
-                    height={700}
-                    priority
-                    className="
-                    w-full
-                    rounded-[28px]
-                    object-cover
-                    "
-                  />
+  src={service.image}
+  alt={service.title}
+  width={700}
+  height={700}
+  priority
+  sizes="(max-width: 768px) 100vw, 380px"
+  className="w-full rounded-[28px] object-cover"
+/>
 
                 </div>
 

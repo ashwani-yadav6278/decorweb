@@ -5,63 +5,63 @@ const services = [
   {
     title: "Birthday Balloon Decoration",
     slug: "birthday-balloon-decoration",
-    image: "/services/birthday.jpeg",
+    image: "/services/birthday.webp",
     description:
       "Creative birthday balloon decorations with arches, backdrops, neon signs and customized themes.",
   },
   {
     title: "Anniversary Decoration",
     slug: "anniversary-decoration",
-    image: "/services/25th anniversary decoration.jpg",
+    image: "/services/25th anniversary decoration.webp",
     description:
       "Romantic anniversary decorations with balloons, candles, rose petals and personalized setups.",
   },
   {
     title: "Baby Shower Decoration",
     slug: "baby-shower-decoration",
-    image: "/services/baby shower balloon decoration.jpg",
+    image: "/services/baby shower balloon decoration.webp",
     description:
       "Elegant baby shower decorations with pastel balloons, themed backdrops and welcome boards.",
   },
   {
     title: "1st birthday Decoration",
     slug: "1st-birthday-decoration",
-    image: "/services/1st birthday balloon decor.jpg",
+    image: "/services/1st birthday balloon decor.webp",
     description:
       "Fun and colorful 1st birthday decorations with themed backdrops and custom designs.",
   },
   {
     title: "Theme Party Decoration",
     slug: "theme-party-decoration",
-    image: "/services/jungle safari theme birthday balloon decor.jpg",
+    image: "/services/jungle safari theme birthday balloon decor.webp",
     description:
       "Exciting theme party decorations with balloons, banners and customized setups.",
   },
   {
     title: "First Night Decoration",
     slug: "first-night-room-decoration",
-    image: "/services/romantic first nigt decor.jpg",
+    image: "/services/romantic first nigt decor.webp",
     description:
       "Traditional haldi ceremony decoration with floral themes, balloons and vibrant backdrops.",
   },
   {
     title: "Romantic Room  Decoration for Couple",
     slug: "romantic-room-decoration-for-couple",
-    image: "/services/romantic-room.jpg",
+    image: "/services/romantic decoration for  couple on anniversary birthday.webp",
     description:
       "Traditional haldi ceremony decoration with floral themes, balloons and vibrant backdrops.",
   },
   {
     title: "Welcome Baby Decoration",
-    slug: "welcome-baby-decoration",
-    image: "/services/welcome-baby.jpg",
+    slug: "welcome-baby-decoration-faridabad",
+    image: "/services/Welcome Baby boy balloon decor with flower.webp",
     description:
       "Beautiful room decorations to welcome your newborn with balloons and custom themes.",
   },
   {
-    title: "Bride To Be Decoration",
-    slug: "bride-to-be-decoration",
-    image: "/services/bride-to-be.jpg",
+    title: "Car Boot Decoration",
+    slug: "car-boot-decoration",
+    image: "/services/car boot birthday balloon decor.webp",
     description:
       "Stylish bride-to-be and bachelorette decorations with balloon arches and neon signs.",
   },
