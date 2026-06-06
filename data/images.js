@@ -41,8 +41,8 @@ const images = [
   "welcome_baby_bouque_balloon_decoration.jpg",
   "baby_shower_balloon decoration pink blue.jpg",
   "arch_balloon birthday decoration.jpg",
-  "arch_balloon_birthday_decoration chrome rose gold.jpg",
-  "arch_balloon_birthday_decoration white golden blue.jpg",
+  "arch_balloon_birthday_decoration chrome rose gold.webp",
+  "arch_balloon_birthday_decoration white golden blue.webp",
   "ring_jungle_theme_balloon_birthday decoration.jpg",
   "ring_jungle_theme_balloon birthday decoration.jpg",
   "ring_krishna_radha_theme_balloon_birthday_decoration.jpg",
@@ -209,6 +209,22 @@ const images = [
   "jungle them decor for kids on first birthday.jpg",
   "kids birthday decoration theme based on junle theme.jpg",
   "kids theme decor jungle theme decor for birthday.jpg",
+  "Annaprashan Balloon Decor with Floral Drapes and Baby Chair.webp",
+  "Harshiv First Birthday Jungle Safari Balloon Decor with Family Cutout and Animal Theme Backdrop.webp",
+  "Kiaansh 5th Birthday Space Theme Balloon Decor with Astronaut and Rocket Arch.webp",
+  "Happy Birthday Jungle Safari Balloon Decor with Green Yellow Garland and Animal Theme.webp",
+  "Bhavyam And Divyam Mickey Mouse Birthday Balloon Decor with Red Yellow Arch and Marquee Numbers.webp",
+  "Tejasv 9th Birthday Lord Ram Theme Balloon Decor with Orange Yellow Arch and Floral Setup.webp",
+  "Elegant New Year Eve Balloon Decoration at Home.webp",
+  "Baby Girl 1st Birthday Balloon Decoration with Pink Lavender Arch and LED Backdrop.webp",
+  "Prince 2nd Birthday Balloon Decoration with Blue White Arch and Silver Fringe Backdrop.webp",
+  "Birthday Racing Car Theme Balloon Decor with Red Yellow Blue Balloon Arch and Road Track Setup.webp",
+"Kids Cars Theme Birthday Decoration at Home.webp",
+"Raiva 1st Birthday Butterfly Theme Balloon Decor with Pink Purple Arch and Princess Setup.webp",
+"Elegant Black Gold Birthday Balloon Decor with Metallic Ring Arch and Neon Happy Birthday Setup.webp",
+"Engagement Ring Balloon Decor with Rose Gold and White Organic Arch Setup.webp",
+"40th Birthday Black Gold Balloon Decor with LED Numbers and Neon Happy Birthday Setup.webp",
+
 
 
 

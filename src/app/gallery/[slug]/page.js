@@ -108,74 +108,66 @@ export default async function DecorationPage({ params }) {
   return (
     <div className="max-w-7xl mx-auto p-6">
       {/* MAIN SECTION */}
-      <div className="grid md:grid-cols-2 gap-10">
-        {/* IMAGE */}
+      <div className="grid md:grid-cols-[65%_35%] gap-10">
         {/* IMAGE + DELIVERY DETAILS */}
-<div>
+        <div>
+          {/* IMAGE */}
+          <div className="relative w-full bg-gray-50 rounded-2xl overflow-hidden border">
+            <Image
+              src={`/${decoration.image}`}
+              alt={decoration.alt}
+              width={1200}
+              height={1600}
+              priority
+              className="w-full h-auto rounded-2xl"
+            />
+          </div>
 
-  {/* IMAGE */}
-  <div className="relative w-full h-[500px]">
-    <Image
-      src={`/${decoration.image}`}
-      alt={decoration.alt}
-      fill
-      priority
-      className="object-cover rounded-2xl"
-    />
-  </div>
+          {/* DELIVERY DETAILS */}
+          <div className="mt-8 border rounded-2xl overflow-hidden bg-white shadow-sm">
+            <details className="group">
+              <summary className="flex items-center justify-between cursor-pointer p-5 font-semibold text-gray-800 list-none">
+                <div className="flex items-center gap-2 text-lg">
+                  🚚 Delivery Detail
+                </div>
 
-  {/* DELIVERY DETAILS */}
-  <div className="mt-8 border rounded-2xl overflow-hidden bg-white shadow-sm">
-    <details className="group">
-      <summary className="flex items-center justify-between cursor-pointer p-5 font-semibold text-gray-800 list-none">
+                <span className="transition-transform duration-300 group-open:rotate-180 text-xl">
+                  ⌃
+                </span>
+              </summary>
 
-        <div className="flex items-center gap-2 text-lg">
-          🚚 Delivery Detail
+              <div className="px-6 pb-6 text-gray-600 text-sm leading-7">
+                <ul className="space-y-3 list-disc pl-5">
+                  <li>
+                    Displayed images are illustrative; actual products may vary
+                    based on availability.
+                  </li>
+
+                  <li>
+                    Our balloon expert will arrive at your selected time slot.
+                  </li>
+
+                  <li>
+                    Please provide a stool or ladder for ceiling decoration.
+                  </li>
+
+                  <li>
+                    Decoration can be arranged in hotel rooms with prior
+                    permission.
+                  </li>
+
+                  <li>Rental items will be collected the following day.</li>
+
+                  <li>
+                    Complaints must be reported within 2 hours of delivery.
+                  </li>
+
+                  <li>No cancellation once decoration work has started.</li>
+                </ul>
+              </div>
+            </details>
+          </div>
         </div>
-
-        <span className="transition-transform duration-300 group-open:rotate-180 text-xl">
-          ⌃
-        </span>
-
-      </summary>
-
-      <div className="px-6 pb-6 text-gray-600 text-sm leading-7">
-        <ul className="space-y-3 list-disc pl-5">
-
-          <li>
-            Displayed images are illustrative; actual products may vary based on availability.
-          </li>
-
-          <li>
-            Our balloon expert will arrive at your selected time slot.
-          </li>
-
-          <li>
-            Please provide a stool or ladder for ceiling decoration.
-          </li>
-
-          <li>
-            Decoration can be arranged in hotel rooms with prior permission.
-          </li>
-
-          <li>
-            Rental items will be collected the following day.
-          </li>
-
-          <li>
-            Complaints must be reported within 2 hours of delivery.
-          </li>
-
-          <li>
-            No cancellation once decoration work has started.
-          </li>
-
-        </ul>
-      </div>
-    </details>
-  </div>
-
-</div>
         {/* DETAILS */}
         <div>
           <h1 className="text-3xl md:text-4xl font-bold">{decoration.title}</h1>
@@ -205,7 +197,6 @@ export default async function DecorationPage({ params }) {
           </p>
 
           {/* DELIVERY DETAILS */}
-          
 
           {/* ITEMS USED */}
           {decoration.items?.length > 0 && (
@@ -296,10 +287,12 @@ export default async function DecorationPage({ params }) {
                 </div>
               </div>
             </Link>
-            
           ))}
         </div>
-        <Link href="/gallery" className="text-blue-500 text-2xl hover:text-blue-700">
+        <Link
+          href="/gallery"
+          className="text-blue-500 text-2xl hover:text-blue-700"
+        >
           <div className="flex items-center gap-2">
             <span>←</span>
             <span>Back to Gallery</span>
