@@ -145,6 +145,9 @@ export default function Hero() {
             decoration for couples, or elegant baby shower themes, Balloonzaa
             delivers Instagram-worthy decoration setups for every celebration.
           </p>
+          <Link className="font-bold text-pink-500 text-xl underline capitalize "  href="/contact">
+            have Any query? Feel free to contact us!
+          </Link>
         </div>
       </section>
 
@@ -169,7 +172,7 @@ export default function Hero() {
             </Link>
 
             <Link
-              href="/gallery"
+              href="/service/baby-shower-decoration"
               className="bg-white p-6 rounded-xl shadow hover:shadow-lg transition"
             >
               <h3 className="font-bold text-xl mb-2">
@@ -181,7 +184,7 @@ export default function Hero() {
             </Link>
 
             <Link
-              href="/gallery"
+              href="/service/welcome-baby-decoration-faridabad"
               className="bg-white p-6 rounded-xl shadow hover:shadow-lg transition"
             >
               <h3 className="font-bold text-xl mb-2">
@@ -193,7 +196,7 @@ export default function Hero() {
             </Link>
 
             <Link
-              href="/gallery"
+              href="/service/anniversary-decoration"
               className="bg-white p-6 rounded-xl shadow hover:shadow-lg transition"
             >
               <h3 className="font-bold text-xl mb-2">
@@ -273,6 +276,10 @@ export default function Hero() {
         <div className="max-w-6xl mx-auto px-6 text-center">
           <h2 className="text-3xl font-bold mb-10">
             Why Choose Balloonzaa?
+            <br />
+            <Link className="font-bold text-pink-500 text-xl capitalize underline" href="/about">
+              Want to know more about Balloonzaa
+            </Link>
           </h2>
 
           <div className="grid md:grid-cols-3 gap-6">
@@ -306,6 +313,8 @@ export default function Hero() {
             We provide balloon decoration services in Sector 15, Sector 16,
             Sector 21, NIT Faridabad, Greenfield Colony, Greater Faridabad,
             Surajkund, Charmwood Village, and nearby areas.
+            <br />
+            <Link className="font-bold text-pink-500 text-xl underline " href="/areas">Read more about our service areas</Link>
           </p>
         </div>
       </section>

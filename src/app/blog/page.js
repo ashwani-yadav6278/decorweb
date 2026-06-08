@@ -1,5 +1,3 @@
-
-
 import Image from "next/image";
 import Link from "next/link";
 
@@ -8,24 +6,14 @@ export const metadata = {
     "Balloon Decoration in Faridabad | Birthday & Room Decoration Services",
   description:
     "Best balloon decoration in Faridabad for birthdays, anniversaries, baby showers, surprise room decoration and events at affordable prices.",
-  keywords: [
-    "balloon decoration in faridabad",
-    "balloon decoration in faridabad near me",
-    "balloon decoration in faridabad price",
-    "birthday balloon decoration in faridabad",
-    "best balloon decoration in faridabad",
-    "cheap balloon decoration in faridabad",
-    "balloon decoration services in faridabad",
-    "balloon decoration shop in faridabad",
-    "balloon decoration faridabad haryana",
-    "balloon decoration services near me",
-  ],
+  alternates: {
+    canonical: "https://www.balloonzaa.in/blog",
+  },
 };
 
 export default function BlogPage() {
   return (
     <main className="bg-white text-gray-800">
-
       {/* HERO SECTION */}
       <section className="relative w-full h-[400px]">
         <Image
@@ -60,9 +48,7 @@ export default function BlogPage() {
 
       {/* BLOG CONTENT */}
       <section className="max-w-5xl mx-auto px-4 py-14">
-
         <div className="prose prose-lg max-w-none">
-
           <p>
             Planning a birthday, anniversary, baby shower, or surprise party?
             Professional <strong>balloon decoration in Faridabad</strong> can
@@ -150,16 +136,16 @@ export default function BlogPage() {
           </div>
 
           <h2>Cheap Balloon Decoration in Faridabad</h2>
-
+          <Link href="/pricing" className="text-pink-500 font-semibold">
+            View Decoration Pricing
+          </Link>
           <p>
             Looking for <strong>cheap balloon decoration in Faridabad</strong>?
             We offer affordable decoration packages for home celebrations,
             surprise parties, and small gatherings without compromising quality.
           </p>
 
-          <p>
-            Our budget-friendly decoration packages are perfect for:
-          </p>
+          <p>Our budget-friendly decoration packages are perfect for:</p>
 
           <ul>
             <li>Home birthday parties</li>
@@ -202,7 +188,9 @@ export default function BlogPage() {
           </div>
 
           <h2>Best Balloon Decoration in Faridabad</h2>
-
+          <Link href="/" className="text-pink-500 font-semibold">
+            Home Decoration Services
+          </Link>
           <p>
             If you are searching for the{" "}
             <strong>best balloon decoration in Faridabad</strong>, choose a team
@@ -259,7 +247,6 @@ export default function BlogPage() {
           <h2>Frequently Asked Questions</h2>
 
           <div className="space-y-6">
-
             <div>
               <h3 className="font-bold">
                 What is the starting price of balloon decoration in Faridabad?
@@ -293,12 +280,10 @@ export default function BlogPage() {
                 Faridabad.
               </p>
             </div>
-
           </div>
 
           {/* CTA */}
           <div className="bg-pink-50 border border-pink-200 rounded-2xl p-8 mt-12 text-center">
-
             <h2 className="text-3xl font-bold mb-4">
               Book Balloon Decoration in Faridabad
             </h2>
@@ -310,7 +295,6 @@ export default function BlogPage() {
             </p>
 
             <div className="flex flex-wrap gap-4 justify-center">
-
               <a
                 href="https://wa.me/919582060618"
                 className="bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-full font-semibold transition"
@@ -324,10 +308,8 @@ export default function BlogPage() {
               >
                 Contact Us
               </Link>
-
             </div>
           </div>
-
         </div>
       </section>
 
@@ -339,8 +321,8 @@ export default function BlogPage() {
             "@context": "https://schema.org",
             "@type": "LocalBusiness",
             name: "Balloonza Balloon Decoration",
-            image: "https://yourwebsite.com/logo.png",
-            url: "https://yourwebsite.com",
+            image: "https://balloonzaa.in/logo.png",
+            url: "https://balloonzaa.in",
             telephone: "+91-9582060618",
             address: {
               "@type": "PostalAddress",

@@ -60,8 +60,8 @@ export async function generateMetadata({ params }) {
       images: [
         {
           url: `https://www.balloonzaa.in/${decoration.image}`,
-          width: 1200,
-          height: 630,
+          width: 1000,
+          height: 530,
           alt: decoration.alt,
         },
       ],
@@ -117,7 +117,7 @@ export default async function DecorationPage({ params }) {
               src={`/${decoration.image}`}
               alt={decoration.alt}
               width={1200}
-              height={1600}
+              height={1000}
               priority
               className="w-full h-auto rounded-2xl"
             />

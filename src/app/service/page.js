@@ -42,14 +42,14 @@ const services = [
     slug: "first-night-room-decoration",
     image: "/services/romantic first nigt decor.webp",
     description:
-      "Traditional haldi ceremony decoration with floral themes, balloons and vibrant backdrops.",
+      "Romantic room decoration for first night celebration for newly married couples with balloons, candles, rose petals and personalized themes.",
   },
   {
     title: "Romantic Room  Decoration for Couple",
     slug: "romantic-room-decoration-for-couple",
     image: "/services/romantic decoration for  couple on anniversary birthday.webp",
     description:
-      "Traditional haldi ceremony decoration with floral themes, balloons and vibrant backdrops.",
+      "Romantic room decoration for couples with balloons, candles, rose petals and personalized themes.",
   },
   {
     title: "Welcome Baby Decoration",

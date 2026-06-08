@@ -16,10 +16,6 @@ export const metadata = {
     google: "T75HhKJ91Y-rtQmIMRkyXNPny6mpnt2Ll1bnAQrsSt8",
   },
 
-  alternates: {
-    canonical: "https://www.balloonzaa.in",
-  },
-
   openGraph: {
     title: "Balloon Decoration in Faridabad | Balloonzaa",
 

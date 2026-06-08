@@ -18,34 +18,45 @@ export default function Header() {
 
   return (
     <header className="bg-[#FEF9FF] shadow-sm sticky top-0 z-40">
-    <div className="max-w-6xl mx-auto flex items-center justify-between px-6 py-4 lg:py-5">
-
-      {/* LOGO */}
-<Link href="/" className="flex items-center gap-4 whitespace-nowrap">
- 
-
-  <div className="leading-tight">
-    <p className="text-2xl lg:text-3xl font-extrabold italic text-[#6D5DF6] ">
-      Balloonzaa
-    </p>
-    <p className="text-sm lg:text-base text-gray-500">
-      Balloon & Party Decor
-    </p>
-  </div>
-</Link>
-
-
+      <div className="max-w-6xl mx-auto flex items-center justify-between px-6 py-4 lg:py-5">
+        {/* LOGO */}
+        <Link href="/" className="flex items-center gap-4 whitespace-nowrap">
+          <div className="leading-tight">
+            <p className="text-2xl lg:text-3xl font-extrabold italic text-[#6D5DF6] ">
+              Balloonzaa
+            </p>
+            <p className="text-sm lg:text-base text-gray-500">
+              Balloon & Party Decor
+            </p>
+          </div>
+        </Link>
 
         {/* DESKTOP NAV (ONLY ≥1024px) */}
         <nav className="hidden lg:flex items-center space-x-1">
-          <Link href="/" className={navLinkClass("/")}>Home</Link>
-          <Link href="/gallery" className={navLinkClass("/gallery")}>Gallery</Link>
-          <Link href="/pricing" className={navLinkClass("/pricing")}>Pricing</Link>
-          <Link href="/areas" className={navLinkClass("/areas")}>Areas</Link>
-          <Link href="/about" className={navLinkClass("/about")}>About us</Link>
-          <Link href="/contact" className={navLinkClass("/contact")}>Contact</Link>
-           <Link href="/service" className={navLinkClass("/service")}>Service</Link>
-          <Link href="/blog" className={navLinkClass("/blog")}>Blog</Link>
+          <Link href="/" className={navLinkClass("/")}>
+            Home
+          </Link>
+          <Link href="/gallery" className={navLinkClass("/gallery")}>
+            Gallery
+          </Link>
+          <Link href="/pricing" className={navLinkClass("/pricing")}>
+            Pricing
+          </Link>
+          <Link href="/areas" className={navLinkClass("/areas")}>
+            Areas
+          </Link>
+          <Link href="/about" className={navLinkClass("/about")}>
+            About us
+          </Link>
+          <Link href="/contact" className={navLinkClass("/contact")}>
+            Contact
+          </Link>
+          <Link href="/service" className={navLinkClass("/service")}>
+            Service
+          </Link>
+          <Link href="/blog" className={navLinkClass("/blog")}>
+            Blog
+          </Link>
 
           <a
             href="tel:+919582060618"
@@ -74,26 +85,65 @@ export default function Header() {
             className="fixed right-0 top-0 h-full w-72 bg-white shadow-lg p-5 animate-slideIn"
             onClick={(e) => e.stopPropagation()}
           >
-
             {/* MENU HEADER */}
             <div className="flex justify-between items-center mb-6">
               <h2 className="text-lg font-bold text-[#6D5DF6]">Menu</h2>
-              <button
-                onClick={() => setMenuOpen(false)}
-                className="text-2xl"
-              >
+              <button onClick={() => setMenuOpen(false)} className="text-2xl">
                 ✕
               </button>
             </div>
 
             {/* LINKS */}
             <div className="space-y-2">
-              <Link href="/" onClick={() => setMenuOpen(false)} className={navLinkClass("/")}>Home</Link>
-              <Link href="/gallery" onClick={() => setMenuOpen(false)} className={navLinkClass("/gallery")}>Gallery</Link>
-              <Link href="/pricing" onClick={() => setMenuOpen(false)} className={navLinkClass("/pricing")}>Pricing</Link>
-              <Link href="/areas" onClick={() => setMenuOpen(false)} className={navLinkClass("/areas")}>Areas</Link>
-              <Link href="/about" onClick={() => setMenuOpen(false)} className={navLinkClass("/about")}>About us</Link>
-              <Link href="/contact" onClick={() => setMenuOpen(false)} className={navLinkClass("/contact")}>Contact</Link>
+              <Link
+                href="/"
+                onClick={() => setMenuOpen(false)}
+                className={navLinkClass("/")}
+              >
+                Home
+              </Link>
+              <Link
+                href="/gallery"
+                onClick={() => setMenuOpen(false)}
+                className={navLinkClass("/gallery")}
+              >
+                Gallery
+              </Link>
+              <Link
+                href="/pricing"
+                onClick={() => setMenuOpen(false)}
+                className={navLinkClass("/pricing")}
+              >
+                Pricing
+              </Link>
+              <Link
+                href="/areas"
+                onClick={() => setMenuOpen(false)}
+                className={navLinkClass("/areas")}
+              >
+                Areas
+              </Link>
+              <Link href="/service" className={navLinkClass("/service")}>
+                Service
+              </Link>
+              <Link href="/blog" className={navLinkClass("/blog")}>
+                Blog
+              </Link>
+
+              <Link
+                href="/about"
+                onClick={() => setMenuOpen(false)}
+                className={navLinkClass("/about")}
+              >
+                About us
+              </Link>
+              <Link
+                href="/contact"
+                onClick={() => setMenuOpen(false)}
+                className={navLinkClass("/contact")}
+              >
+                Contact
+              </Link>
             </div>
 
             {/* CALL BUTTON */}
